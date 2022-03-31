@@ -3,7 +3,7 @@ import react from "react";
 const PostForm = () => {
     return (
         <>
-            <form action="board" method="POST">
+            <form action="/api/board" method="POST">
                 <table>
                     <tr>
                         <td><input type="text" name="inputTitle" placeholder="제목을 입력하세요."/></td>

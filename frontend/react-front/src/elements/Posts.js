@@ -4,7 +4,7 @@ import axios from "axios";
 const Posts = () => {
     const [posts, setPosts] = useState([])
     const callApi = async()=> {
-        axios.get("/board").then((res) => {
+        axios.get("/api/board").then((res) => {
         setPosts(res.data.result);
         })
     }
@@ -14,12 +14,15 @@ const Posts = () => {
     }, [])
     return (
         <>
-            <table>
-                <tr>
-                    <td>제목</td>
-                    <td>작성자</td>
-                    <td>작성일</td>
-                </tr>
+            <table className="table">
+                <thead className="thead-light">
+                    <tr>
+                        <td>제목</td>
+                        <td>작성자</td>
+                        <td>작성일</td>
+                    </tr>
+                    
+                </thead>
                 {posts.map(post =>
                     <>
                         <tr>

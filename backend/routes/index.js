@@ -1,9 +1,9 @@
 const express = require('express');
-const models = require('../models/index');
+const models = require('../models');
 const router = express.Router();
 
 /* GET home page. */
-router.get('/api', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.json({ title: 'Express' });
 });
 
@@ -22,8 +22,8 @@ router.post('/board', function(req, res, next) {
     title: body.inputTitle,
     writer: body.inputWriter
   }).then( result => {
+    res.redirect("/")
     console.log("데이터 추가 완료");
-    res.redirect("/board");
   }).catch( err => {
     console.log("데이터 추가 실패");
   })
@@ -40,8 +40,8 @@ router.put('/board:id', function(req, res, next) {
     where: {id: postID}
   })
   .then( result => {
+    res.redirect("/");
     console.log("데이터 수정 완료");
-    res.redirect("/board");
   })
   .catch( err => {
     console.log("데이터 수정 실패");
@@ -55,7 +55,6 @@ router.delete('/board/:id', function(req, res, next) {
     where: {id: postID}
   })
   .then( result => {
-    res.redirect("/board")
   })
   .catch( err => {
     console.log("데이터 삭제 실패");

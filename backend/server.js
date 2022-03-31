@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -33,9 +34,20 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+app.use(session({
+  key: 'sid', // 세션의 키값
+  secret: 'secret', // 세션의 비밀키, 이 값을 통해 세선을 암호화 하여 저장
+  resave: false, // 세션을 항상 저장 하지 않음
+  saveUninitialized: true, // 세션이 저장되기 전에 uninitialize 상태로 만들어 저장
+  cookie: {
+    maxAge: 1000 * 60 * 60 // 쿠키 유효시간 1시간
+  }
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/api', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
