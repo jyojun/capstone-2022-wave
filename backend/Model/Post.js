@@ -4,10 +4,11 @@ const postSchema = new mongoose.Schema(
   {
     title: String,
     content: String,
+    postNum: Number,
   },
-  { collection: "Posts " }
+  { collection: "Posts" }
 );
 
-const Post = mongoose.model("Post", postSchema);
+const Post = mongoose.model("Posts", postSchema);
 
 module.exports = { Post };

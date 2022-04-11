@@ -11,10 +11,11 @@ const UploadForm = styled.form`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  input {
+  #title {
     border-radius: 10px;
     border: 1px solid #c6c6c6;
     padding: 10px;
+    margin-bottom: 15px;
     &:active,
     &:focus {
       outline: none;
@@ -56,7 +57,7 @@ const UploadButtonDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   button {
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 5px 10px;
     background-color: black;
     color: white;
@@ -65,6 +66,17 @@ const UploadButtonDiv = styled.div`
       background-color: white;
       color: black;
       border: 1px solid black;
+    }
+    &.cancel {
+      margin-left: 10px;
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+      &:hover {
+        background-color: black;
+        color: white;
+        border: 1px solid black;
+      }
     }
   }
 `;

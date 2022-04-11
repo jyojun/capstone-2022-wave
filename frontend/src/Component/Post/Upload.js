@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { UploadDiv, UploadForm, UploadButtonDiv } from "../../Style/UploadCSS";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ImageUpload from "./ImageUpload";
 
 function Upload(props) {
   const [Title, setTitle] = useState("");
@@ -34,7 +35,6 @@ function Upload(props) {
       });
   };
 
-  useEffect(() => {}, []);
   return (
     <UploadDiv>
       <UploadForm>
@@ -47,6 +47,7 @@ function Upload(props) {
           type="text"
           value={Title}
         />
+        <ImageUpload />
         <label htmlFor="">내용</label>
         <textarea
           onChange={(e) => {

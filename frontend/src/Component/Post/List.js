@@ -1,44 +1,65 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { ListDiv, ListItem } from "../../Style/ListCSS";
+import { BtnDiv } from "../../Style/DetailCSS";
 
 function List(props) {
-  const [Text, setText] = useState("");
+  const [PostList, setPostList] = useState([]);
   useEffect(() => {
-    let body = {
-      text: "Hello",
-    };
-
     axios
-      .post("/api/test", body)
+      .post("/api/post/list")
       .then((res) => {
-        console.log(res);
-        setText(res.data.text);
+        if (res.data.success) {
+          setPostList([...res.data.postList]);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
   return (
-    <div>
-      <h3>List</h3>
-      <h3>{Text}</h3>
-      {props.ContentList.map((content, idx) => {
-        return (
-          <div
-            key={idx}
+    <ListDiv>
+      <h3
+        style={{
+          textAlign: "center",
+          padding: "1rem",
+        }}
+      >
+        QA 게시판
+      </h3>
+      <BtnDiv>
+        <button
+          style={{
+            backgroundColor: "white",
+            border: "none",
+          }}
+        >
+          <Link
+            to="/upload"
             style={{
-              width: "100%",
-              marginLeft: "1rem",
-              borderBottom: "solid black 1px",
+              color: "black",
+              textDecoration: "none",
+              border: "none",
             }}
+            className="write"
           >
-            내용 : {content}
-          </div>
+            글쓰기
+          </Link>
+        </button>
+      </BtnDiv>
+
+      {PostList.map((post, idx) => {
+        return (
+          <ListItem key={idx}>
+            <Link to={`/post/${post.postNum}`}>
+              <p className="title">{post.title}</p>
+              <p>{post.content}</p>
+            </Link>
+          </ListItem>
         );
       })}
-      <Button>Test</Button>
-    </div>
+    </ListDiv>
   );
 }
 
