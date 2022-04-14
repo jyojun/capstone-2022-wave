@@ -19,6 +19,9 @@ function ImageUpload(props) {
   return (
     <div>
       <Form.Control
+        style={{
+          borderRadius: "5px",
+        }}
         type="file"
         className="shadow-none"
         accept="image/"

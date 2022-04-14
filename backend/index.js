@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const port = 5000;
 const config = require("./config/key.js");
+const UserRouter = require("./Router/user.js");
 const PostRouter = require("./Router/post.js");
 app.use(express.static(path.join(__dirname, "../frontend/build"))); // static 폴더를 사용
 app.use("/image", express.static("./image")); // image 파일을 server 아래 image폴더 안에서 사용
@@ -11,6 +12,7 @@ app.use("/image", express.static("./image")); // image 파일을 server 아래 i
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/user", UserRouter);
 app.use("/api/post", PostRouter);
 
 app.listen(port, () => {

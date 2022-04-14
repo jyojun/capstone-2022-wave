@@ -26,8 +26,31 @@ function Heading() {
             >
               Home
             </Link>
-            <Link to="/list" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/list"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                marginRight: "10px",
+              }}
+            >
               QnA
+            </Link>
+            <Link
+              to="/login"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                marginRight: "10px",
+              }}
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Register
             </Link>
           </Nav>
         </Navbar.Collapse>
