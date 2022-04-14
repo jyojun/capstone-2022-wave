@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { UploadDiv, UploadForm, UploadButtonDiv } from "../../Style/UploadCSS";
+import ImageUpload from "./ImageUpload";
 
 function Edit() {
   // edit의 detail부분 (작성 정보 불러오기)
@@ -10,6 +11,7 @@ function Edit() {
   const [Flag, setFlag] = useState(false);
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
+  const [Image, setImage] = useState("");
   let params = useParams();
   let navigate = useNavigate();
   useEffect(() => {
@@ -33,6 +35,7 @@ function Edit() {
   useEffect(() => {
     setTitle(PostInfo.title);
     setContent(PostInfo.content);
+    setImage(PostInfo.image);
   }, [PostInfo]);
 
   // edit의 upload 부분
@@ -47,6 +50,7 @@ function Edit() {
       title: Title,
       content: Content,
       postNum: params.postNum,
+      image: Image,
     };
 
     axios
@@ -76,6 +80,7 @@ function Edit() {
           type="text"
           value={Title}
         />
+        <ImageUpload setImage={setImage} />
         <label htmlFor="">내용</label>
         <textarea
           onChange={(e) => {

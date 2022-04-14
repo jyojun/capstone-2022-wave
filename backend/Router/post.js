@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
+const setUpload = require("../Util/upload.js");
 
 router.post("/submit", (req, res) => {
   let temp = req.body;
+  //   console.log(req.body);
   Counter.findOne({ name: "counter" })
     .exec()
     .then((counter) => {
@@ -51,6 +53,7 @@ router.post("/edit", (req, res) => {
   let temp = {
     title: req.body.title,
     content: req.body.content,
+    image: req.body.image,
   };
   Post.updateOne({ postNum: Number(req.body.postNum) }, { $set: temp })
     .exec()
@@ -72,4 +75,18 @@ router.post("/delete", (req, res) => {
       res.status(400).json({ success: false });
     });
 });
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "image/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, `${Date.now()}-${file.originalname}`);
+//   },
+// });
+
+router.post("/image/upload", setUpload("pecus2022/post"), (req, res, next) => {
+  res.status(200).json({ success: true, filePath: res.req.file.location });
+});
+
 module.exports = router;

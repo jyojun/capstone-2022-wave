@@ -7,6 +7,7 @@ import ImageUpload from "./ImageUpload";
 function Upload(props) {
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
+  const [Image, setImage] = useState("");
   let navigate = useNavigate();
 
   const onSubmit = (e) => {
@@ -18,6 +19,7 @@ function Upload(props) {
     let body = {
       title: Title,
       content: Content,
+      image: Image,
     };
 
     axios
@@ -47,7 +49,7 @@ function Upload(props) {
           type="text"
           value={Title}
         />
-        <ImageUpload />
+        <ImageUpload setImage={setImage} />
         <label htmlFor="">내용</label>
         <textarea
           onChange={(e) => {
