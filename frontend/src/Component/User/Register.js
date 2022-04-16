@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoginDiv from "../../Style/UserCSS.js";
 import firebase from "../../firebase.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Register() {
   const [Name, setName] = useState("");
@@ -10,8 +11,16 @@ function Register() {
   const [Password, setPassword] = useState("");
   const [PasswordCheck, setPasswordCheck] = useState("");
   const [Flag, setFlag] = useState(false);
+  const [NameCheck, setNameCheck] = useState(false); // 닉네임 체크
+  const [NameInfo, setNameInfo] = useState("");
   let navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
+  useEffect(() => {
+    if (user.accessToken) {
+      navigate("/");
+    }
+  }, [user]);
   // user가 생성되는 동안 멈춰야하니 promise 방식으로 함수를 생성
   const RegisterFunc = async (e) => {
     setFlag(true);
@@ -21,6 +30,9 @@ function Register() {
     }
     if (Password != PasswordCheck) {
       return alert("비밀번호와 비밀번호 확인 값이 같아야 합니다.");
+    }
+    if (!NameCheck) {
+      return alert("닉네임 중복검사를 진행 해 주세요");
     }
     let createdUser = await firebase
       .auth()
@@ -47,6 +59,26 @@ function Register() {
       }
     });
   };
+
+  const NameCheckFunc = (e) => {
+    e.preventDefault();
+    if (!Name) {
+      return alert("닉네임을 입력하세요.");
+    }
+    let body = {
+      displayName: Name,
+    };
+    axios.post("/api/user/namecheck", body).then((res) => {
+      if (res.data.success) {
+        if (res.data.check) {
+          setNameCheck(true);
+          setNameInfo("사용 가능한 닉네임입니다.");
+        } else {
+          setNameInfo("사용 불가능한 닉네임입니다.");
+        }
+      }
+    });
+  };
   return (
     <LoginDiv>
       <form>
@@ -58,6 +90,8 @@ function Register() {
             setName(e.currentTarget.value);
           }}
         />
+        {NameInfo}
+        <button onClick={(e) => NameCheckFunc(e)}>닉네임 중복검사</button>
         <label>Email</label>
         <input
           type="email"

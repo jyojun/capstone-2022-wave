@@ -8,8 +8,10 @@ const userSlice = createSlice({
     accessToken: "", // 로그인 했는지 여부를 알려주는 토큰값
   },
   reducers: {
-    loginUser: (state) => {
-      //
+    loginUser: (state, action) => {
+      state.displayName = action.payload.displayName;
+      state.uid = action.payload.uid;
+      state.accessToken = action.payload.accessToken;
     },
     clearUser: (state) => {
       state.displayName = "";

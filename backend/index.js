@@ -6,6 +6,8 @@ const port = 5000;
 const config = require("./config/key.js");
 const UserRouter = require("./Router/user.js");
 const PostRouter = require("./Router/post.js");
+const RepleRouter = require("./Router/reple.js");
+
 app.use(express.static(path.join(__dirname, "../frontend/build"))); // static 폴더를 사용
 app.use("/image", express.static("./image")); // image 파일을 server 아래 image폴더 안에서 사용
 // client에서 보내는 request.body 정보를 얻기위해 body parser를 사용
@@ -14,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/user", UserRouter);
 app.use("/api/post", PostRouter);
+app.use("/api/reple", RepleRouter);
 
 app.listen(port, () => {
   mongoose

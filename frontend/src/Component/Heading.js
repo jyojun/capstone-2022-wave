@@ -1,57 +1,139 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import firebase from "../firebase.js";
+import mainLogo from "../pecus_logo.png";
 
 function Heading() {
+  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  const LogoutHandler = () => {
+    firebase.auth().signOut();
+    navigate("/");
+  };
+
   return (
     <Navbar
       style={{
-        backgroundColor: "rgb(41, 128, 185)",
+        backgroundColor: "white",
+        boxShadow: "1px 1px 10px 1px rgba(200, 200, 200)",
       }}
       expand="lg"
       variant="dark"
     >
       <Container>
-        <Navbar.Brand href="/">Pecus</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Brand>
+          <a href="/">
+            <img
+              src={mainLogo}
+              width="100"
+              height="30"
+              className="d-inline-block align-top"
+              style={{
+                backgroundColor: "white",
+              }}
+              alt=""
+            />
+          </a>
+        </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          style={{
+            backgroundColor: "rgb(50, 230, 230)",
+          }}
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link
               to="/"
               style={{
-                color: "white",
+                color: "black",
                 textDecoration: "none",
                 marginRight: "10px",
+                fontWeight: "bold",
               }}
             >
               Home
             </Link>
             <Link
+              to="/place"
+              style={{
+                color: "black",
+                textDecoration: "none",
+                marginRight: "10px",
+                fontWeight: "bold",
+              }}
+            >
+              Pet Care
+            </Link>
+            <Link
+              to="/care"
+              style={{
+                color: "black",
+                textDecoration: "none",
+                marginRight: "10px",
+                fontWeight: "bold",
+              }}
+            >
+              Pet Place
+            </Link>
+            <Link
               to="/list"
               style={{
-                color: "white",
+                color: "black",
                 textDecoration: "none",
                 marginRight: "10px",
+                fontWeight: "bold",
               }}
             >
-              QnA
+              Community
             </Link>
-            <Link
-              to="/login"
-              style={{
-                color: "white",
-                textDecoration: "none",
-                marginRight: "10px",
-              }}
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Register
-            </Link>
+          </Nav>
+        </Navbar.Collapse>
+        <Navbar.Collapse className="justify-content-end">
+          <Nav>
+            {user.accessToken === "" ? (
+              <>
+                <Link
+                  to="/login"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                    marginRight: "10px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Register
+                </Link>
+              </>
+            ) : (
+              <Navbar.Text
+                style={{
+                  color: "black",
+                  textDecoration: "none",
+                  marginRight: "10px",
+                  cursor: "pointer",
+                  paddingTop: "0px",
+                  paddingBottom: "0px",
+                  fontWeight: "bold",
+                }}
+                onClick={() => LogoutHandler()}
+              >
+                Logout
+              </Navbar.Text>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

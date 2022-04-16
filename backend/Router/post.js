@@ -2,24 +2,35 @@ const express = require("express");
 const router = express.Router();
 const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
+const { User } = require("../Model/User.js");
 const setUpload = require("../Util/upload.js");
 
 router.post("/submit", (req, res) => {
-  let temp = req.body;
+  let temp = {
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+  };
   //   console.log(req.body);
   Counter.findOne({ name: "counter" })
     .exec()
     .then((counter) => {
       temp.postNum = counter.postNum;
-      const CommunityPost = new Post(temp);
-      CommunityPost.save().then(() => {
-        // counter를 1씩 증가하여 postNum을 증가
-        Counter.updateOne({ name: "counter" }, { $inc: { postNum: 1 } }).then(
-          () => {
-            res.status(200).json({ success: true });
-          }
-        );
-      });
+      User.findOne({ uid: req.body.uid })
+        .exec() // userInfo를 return 하기 위해서
+        .then((userInfo) => {
+          temp.author = userInfo._id;
+          const CommunityPost = new Post(temp);
+          CommunityPost.save().then(() => {
+            // counter를 1씩 증가하여 postNum을 증가
+            Counter.updateOne(
+              { name: "counter" },
+              { $inc: { postNum: 1 } }
+            ).then(() => {
+              res.status(200).json({ success: true });
+            });
+          });
+        });
     })
     .catch((err) => {
       res.status(400).json({ success: false });
@@ -29,6 +40,7 @@ router.post("/submit", (req, res) => {
 // 저장한 post 모두 list에 보여주기
 router.post("/list", (req, res) => {
   Post.find()
+    .populate("author") // Post 정보를 찾을 때, author의 정보도 모두 추적해서 찾음.
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, postList: doc });
@@ -40,6 +52,7 @@ router.post("/list", (req, res) => {
 
 router.post("/detail", (req, res) => {
   Post.findOne({ postNum: Number(req.body.postNum) })
+    .populate("author")
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, postList: doc });

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ListDiv, ListItem } from "../../Style/ListCSS";
 import { BtnDiv } from "../../Style/DetailCSS";
+import { useSelector } from "react-redux";
 
 function List(props) {
   const [PostList, setPostList] = useState([]);
+
   useEffect(() => {
     axios
       .post("/api/post/list")
@@ -18,6 +20,7 @@ function List(props) {
         console.log(err);
       });
   }, []);
+
   return (
     <ListDiv>
       <h3
@@ -50,10 +53,12 @@ function List(props) {
       </BtnDiv>
 
       {PostList.map((post, idx) => {
+        console.log(post);
         return (
           <ListItem key={idx}>
             <Link to={`/post/${post.postNum}`}>
               <p className="title">{post.title}</p>
+              <p className="author">{post.author.displayName}</p>
               <p>{post.content}</p>
             </Link>
           </ListItem>

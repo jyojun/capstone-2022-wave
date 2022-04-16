@@ -23,4 +23,21 @@ router.post("/register", (req, res) => {
     });
 });
 
+router.post("/namecheck", (req, res) => {
+  User.findOne({ displayName: req.body.displayName })
+    .exec()
+    .then((doc) => {
+      let check = true;
+      if (doc) {
+        // 요청한 닉네임이 존재하면 false
+        check = false;
+      }
+      res.status(200).json({ success: true, check: check });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ success: false });
+    });
+});
+
 module.exports = router;

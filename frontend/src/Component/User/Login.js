@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import LoginDiv from "../../Style/UserCSS.js";
 
 import firebase from "../../firebase.js";
+import { useSelector } from "react-redux";
 
 function Login() {
   const [Email, setEmail] = useState("");
@@ -10,6 +11,7 @@ function Login() {
   const [ErrorMsg, setErrorMsg] = useState("");
 
   let navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
   const SignInFunc = async (e) => {
     e.preventDefault();
@@ -29,6 +31,12 @@ function Login() {
       }
     }
   };
+
+  useEffect(() => {
+    if (user.accessToken) {
+      navigate("/");
+    }
+  }, [user]);
 
   useEffect(() => {
     setTimeout(() => {
