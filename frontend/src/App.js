@@ -6,7 +6,6 @@ import { loginUser, clearUser } from "./Reducer/userSlice.js";
 import firebase from "./firebase.js";
 
 import Heading from "./Component/Heading";
-import List from "./Component/Post/List";
 import Upload from "./Component/Post/Upload";
 import Edit from "./Component/Post/Edit";
 import Home from "./Component/Home";
@@ -15,8 +14,11 @@ import Footer from "react-footer-comp";
 import Login from "./Component/User/Login";
 import Register from "./Component/User/Register";
 import PostArea from "./Component/Post/PostArea";
-import Place from "./Component/Place/Place";
+import Places from "./Component/Place/Places";
 import Care from "./Component/Care/Care";
+import MyPage from "./Component/User/MyPage";
+import Community from "./Component/Community";
+import PlaceUpload from "./Component/Place/PlaceUpload";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,20 +32,25 @@ function App() {
         dispatch(clearUser());
       }
     });
-  }, []);
+  }, [user]);
 
   return (
     <>
       <Heading />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/List" element={<List />} />
+        <Route path="/community" element={<Community />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/post/:postNum" element={<PostArea />} />
         <Route path="/edit/:postNum" element={<Edit />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/place" element={<Place />} />
+        <Route
+          path={`/mypage/:displayName`}
+          element={<MyPage name={user.displayName} />}
+        />
+        <Route path="/place" element={<Places />} />
+        <Route path="/placeUpload" element={<PlaceUpload />} />
         <Route path="/care" element={<Care />} />
       </Routes>
       <Footer

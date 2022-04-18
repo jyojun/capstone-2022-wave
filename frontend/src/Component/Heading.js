@@ -58,7 +58,7 @@ function Heading() {
               Home
             </Link>
             <Link
-              to="/place"
+              to="/care"
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -69,7 +69,7 @@ function Heading() {
               Pet Care
             </Link>
             <Link
-              to="/care"
+              to="/place"
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -80,7 +80,7 @@ function Heading() {
               Pet Place
             </Link>
             <Link
-              to="/list"
+              to="/community"
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -119,20 +119,33 @@ function Heading() {
                 </Link>
               </>
             ) : (
-              <Navbar.Text
-                style={{
-                  color: "black",
-                  textDecoration: "none",
-                  marginRight: "10px",
-                  cursor: "pointer",
-                  paddingTop: "0px",
-                  paddingBottom: "0px",
-                  fontWeight: "bold",
-                }}
-                onClick={() => LogoutHandler()}
-              >
-                Logout
-              </Navbar.Text>
+              <>
+                <Link
+                  to={`/mypage/${user.displayName}`}
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    marginRight: "10px",
+                  }}
+                >
+                  My Page
+                </Link>
+                <Navbar.Text
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                    marginRight: "10px",
+                    cursor: "pointer",
+                    paddingTop: "0px",
+                    paddingBottom: "0px",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => LogoutHandler()}
+                >
+                  Logout
+                </Navbar.Text>
+              </>
             )}
           </Nav>
         </Navbar.Collapse>

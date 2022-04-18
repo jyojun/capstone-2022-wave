@@ -27,6 +27,25 @@ const ListItem = styled.div`
       font-weight: bold;
     }
   }
+  .author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        margin-left: 10px;
+        margin-bottom: 0px;
+        color: darkgrey;
+      }
+    }
+    p.time {
+      color: grey;
+      font-size: 13px; 
+    }
 `;
 
 export { ListDiv, ListItem };

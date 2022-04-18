@@ -40,6 +40,7 @@ function Register() {
 
     await createdUser.user.updateProfile({
       displayName: Name,
+      photoURL: "https://pecus2022.s3.ap-northeast-2.amazonaws.com/profile.png",
     });
 
     console.log(createdUser.user);
@@ -47,6 +48,7 @@ function Register() {
       eamil: createdUser.user.multiFactor.user.email,
       displayName: createdUser.user.multiFactor.user.displayName,
       uid: createdUser.user.multiFactor.user.uid,
+      photoURL: "https://pecus2022.s3.ap-northeast-2.amazonaws.com/profile.png",
     };
     axios.post("/api/user/register", body).then((res) => {
       setFlag(false);

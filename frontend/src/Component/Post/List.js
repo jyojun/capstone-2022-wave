@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { ListDiv, ListItem } from "../../Style/ListCSS";
 import { BtnDiv } from "../../Style/DetailCSS";
-import { useSelector } from "react-redux";
+import Avatar from "react-avatar";
+import moment from "moment";
+import "moment/locale/ko"; // 한국시간으로 설정
 
 function List(props) {
-  const [PostList, setPostList] = useState([]);
-
-  useEffect(() => {
-    axios
-      .post("/api/post/list")
-      .then((res) => {
-        if (res.data.success) {
-          setPostList([...res.data.postList]);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+  const SetTime = (createdAt, updatedAt) => {
+    if (createdAt !== updatedAt) {
+      return moment(updatedAt).format("YYYY년 MMMM Do, hh시 mm분") + "(수정됨)";
+    } else {
+      return moment(createdAt).format("YYYY년 MMMM Do, hh시 mm분");
+    }
+  };
   return (
     <ListDiv>
       <h3
@@ -29,7 +22,7 @@ function List(props) {
           padding: "1rem",
         }}
       >
-        QA 게시판
+        커뮤니티
       </h3>
       <BtnDiv>
         <button
@@ -52,13 +45,29 @@ function List(props) {
         </button>
       </BtnDiv>
 
-      {PostList.map((post, idx) => {
-        console.log(post);
+      {props.PostList.map((post, idx) => {
+        //console.log(post);
         return (
           <ListItem key={idx}>
             <Link to={`/post/${post.postNum}`}>
               <p className="title">{post.title}</p>
-              <p className="author">{post.author.displayName}</p>
+              <div className="author">
+                <div>
+                  <Avatar
+                    size="40"
+                    round={true}
+                    src={post.author.photoURL}
+                    style={{
+                      border: "1px solid #c6c6c6",
+                    }}
+                  />
+                  <p>{post.author.displayName}</p>
+                </div>
+                <p className="time">
+                  {SetTime(post.createdAt, post.updatedAt)}
+                </p>
+              </div>
+
               <p>{post.content}</p>
             </Link>
           </ListItem>

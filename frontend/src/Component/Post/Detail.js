@@ -3,10 +3,21 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { PostDiv, Post, BtnDiv } from "../../Style/DetailCSS";
 import { useSelector } from "react-redux";
+import Avatar from "react-avatar";
+import moment from "moment";
+
 function Detail(props) {
   let params = useParams();
   let navigate = useNavigate();
   const user = useSelector((state) => state.user);
+
+  const SetTime = (createdAt, updatedAt) => {
+    if (createdAt !== updatedAt) {
+      return moment(updatedAt).format("YYYY년 MMMM Do, hh시 mm분") + "(수정됨)";
+    } else {
+      return moment(createdAt).format("YYYY년 MMMM Do, hh시 mm분");
+    }
+  };
 
   const DeleteHandler = () => {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
@@ -31,7 +42,23 @@ function Detail(props) {
       <>
         <Post>
           <h1>{props.PostInfo.title}</h1>
-          <h3>{props.PostInfo.author.displayName}</h3>
+          <div className="author">
+            <div>
+              <Avatar
+                size="40"
+                round={true}
+                src={props.PostInfo.author.photoURL}
+                style={{
+                  border: "1px solid #c6c6c6",
+                  marginRight: "5px",
+                }}
+              />
+              <p>{props.PostInfo.author.displayName}</p>
+            </div>
+            <p className="time">
+              {SetTime(props.PostInfo.createdAt, props.PostInfo.updatedAt)}
+            </p>
+          </div>
           {props.PostInfo.image ? (
             <img
               src={props.PostInfo.image}

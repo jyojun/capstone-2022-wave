@@ -59,7 +59,7 @@ function Edit() {
       .then((res) => {
         if (res.data.success) {
           alert("글 수정이 완료");
-          navigate("/list");
+          navigate("/community");
         } else {
           alert("글 수정 실패");
         }

@@ -28,9 +28,31 @@ const Post = styled.div`
     0px 15px 12px rgba(0, 0, 0, 0.1);
   h1 {
     font-weight: bold;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(205, 205, 205);
   }
+  .author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        margin-left: 10px;
+        margin-bottom: 0px;
+        color: darkgrey;
+      }
+      
+    }
+    p.time {
+      color: grey;
+      font-size: 13px; 
+    }
   p {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
 `;
 

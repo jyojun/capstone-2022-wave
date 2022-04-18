@@ -38,7 +38,7 @@ function Upload(props) {
       .then((res) => {
         if (res.data.success) {
           alert("글 작성이 완료");
-          navigate("/list");
+          navigate("/community");
         } else {
           alert("글 작성 실패");
         }

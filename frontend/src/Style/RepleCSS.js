@@ -46,6 +46,17 @@ const RepleUploadDiv = styled.div`
       }
     }
   }
+  .cancel {
+    display: flex;
+    justify-content: end;
+    button {
+      margin-top: 5px;
+      font-size: 12px;
+      border-radius: 5px;
+      padding: 2px 5px;
+      border: 1px solid #c6c6c6;
+    }
+  }
 `;
 
 const RepleListDiv = styled.div`
@@ -65,6 +76,11 @@ const RepleContentDiv = styled.div`
       font-size: 12px;
       font-weight: bold;
       color: darkgrey;
+    }
+    .authorInfo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
 
     .modalControl {

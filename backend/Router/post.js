@@ -39,8 +39,26 @@ router.post("/submit", (req, res) => {
 
 // 저장한 post 모두 list에 보여주기
 router.post("/list", (req, res) => {
-  Post.find()
+  let sort = {};
+
+  if (req.body.sort === "최신순") {
+    // 최신순
+    sort.createdAt = -1; // 최신순으로 내림차순
+  } else {
+    // 인기순
+    sort.repleNum = -1; // 인기순 내림차순
+  }
+  Post.find({
+    // 제목이나 내용에 일치하는 내용이 있는지 확인 $regex객체에 포함하는 검색내용
+    $or: [
+      { title: { $regex: req.body.searchTerm } },
+      { content: { $regex: req.body.searchTerm } },
+    ],
+  })
     .populate("author") // Post 정보를 찾을 때, author의 정보도 모두 추적해서 찾음.
+    .sort(sort)
+    .skip(req.body.skip) // 0, 5, 10, ...
+    .limit(5) // 한번에 찾을 document 숫자
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, postList: doc });
