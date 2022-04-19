@@ -19,6 +19,7 @@ import Care from "./Component/Care/Care";
 import MyPage from "./Component/User/MyPage";
 import Community from "./Component/Community";
 import PlaceUpload from "./Component/Place/PlaceUpload";
+import PlaceDetail from "./Component/Place/PlaceDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
           element={<MyPage name={user.displayName} />}
         />
         <Route path="/place" element={<Places />} />
+        <Route path="/place/:placeNum" element={<PlaceDetail />} />
         <Route path="/placeUpload" element={<PlaceUpload />} />
         <Route path="/care" element={<Care />} />
       </Routes>

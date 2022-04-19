@@ -6,8 +6,8 @@ const AddressUpload = (props) => {
   const setAddress = props.setAddress;
 
   const onCompletePost = (data) => {
-    console.log(data.Address);
-    setAddress(data.Address);
+    console.log(data.address);
+    setAddress(data.address);
   };
 
   const postCodeStyle = {

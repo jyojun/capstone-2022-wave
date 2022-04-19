@@ -3,32 +3,17 @@ import Place from "./Place";
 import { PlacesDiv } from "../../Style/PlaceCSS.js";
 import { BtnDiv } from "../../Style/DetailCSS";
 import { Link } from "react-router-dom";
+import axios from "axios";
 function Places() {
-  let db = [
-    {
-      name: "Moldoba1",
-      location: "Korea",
-    },
-    {
-      name: "Moldoba2",
-      location: "Korea",
-    },
-    {
-      name: "Moldoba3",
-      location: "Korea",
-    },
-    {
-      name: "Moldoba4",
-      location: "Korea",
-    },
-    {
-      name: "Moldoba5",
-      location: "Korea",
-    },
-  ];
   const [Places, setPlaces] = useState([]);
   useEffect(() => {
-    setPlaces(db);
+    axios.post("/api/place/list").then((res) => {
+      if (res.data.success) {
+        setPlaces(res.data.placeList);
+      } else {
+        alert("장소 정보를 불러오는데 실패하였습니다.");
+      }
+    });
   }, []);
 
   return (
