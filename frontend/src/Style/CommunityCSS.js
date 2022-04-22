@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 const SearchSortDiv = styled.div`
-  padding-top: 1rem;
+  padding-top: 5rem;
   padding-bottom: 1rem;
   max-width: 756px;
   margin: 0 auto !important;

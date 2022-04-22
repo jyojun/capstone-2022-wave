@@ -4,7 +4,7 @@
 
 ## 1. 프로젝트 소개
 
-<p align="center"><img src="https://pecus2022.s3.ap-northeast-2.amazonaws.com/user/1650250915342.jpeg"></p>
+<p align="center"><img src="https://pecus2022.s3.ap-northeast-2.amazonaws.com/1650250915342+(1).jpeg"></p>
 
 1인 가구의 증가와 고령화, 코로나19로 인한 재택근무 일상화 등 사회 환경 변화에 따라 반려동물을 키우는 인구수 증가하고 이러한 추세에 따라 반려동물과 반려인들의 삶의 질 향상을 위해 기존 펫 커뮤니티의 개선점을 찾고 발전시킬 필요성을 느껴 'Petcus' 라는 이름의 커뮤니티 웹서비스를 진행하게 되었다.
 
@@ -78,4 +78,28 @@
 
 ## 3. 사용법
 
-추후 추가 예정
+- git clone
+
+```
+git clone "https://github.com/jyojun/capstone-2022-wave"
+```
+
+- Backend
+
+```
+cd backend
+npm i
+npm run start
+```
+
+- Frontend
+
+```
+cd frontend
+npm i
+npm run start
+
+* 페이지
+http://localhost:3000
+
+```

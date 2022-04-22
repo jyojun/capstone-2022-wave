@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import firebase from "../firebase.js";
 import mainLogo from "../pecus_logo.png";
+import Avatar from "react-avatar";
+import "@fontsource/roboto";
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 
 function Heading() {
+  const [Hamburger, setHamburger] = useState(true);
+
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
 
@@ -19,6 +25,12 @@ function Heading() {
       style={{
         backgroundColor: "white",
         boxShadow: "1px 1px 10px 1px rgba(200, 200, 200)",
+        position: "fixed",
+        top: "0",
+        left: "0",
+        right: "0",
+        zIndex: "10",
+        fontFamily: "Roboto",
       }}
       expand="lg"
       variant="dark"
@@ -41,9 +53,14 @@ function Heading() {
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           style={{
-            backgroundColor: "rgb(50, 230, 230)",
+            color: "grey",
           }}
-        />
+          onClick={(e) => {
+            setHamburger(!Hamburger);
+          }}
+        >
+          {Hamburger ? <MenuIcon /> : <MenuOpenIcon />}
+        </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link
@@ -129,6 +146,16 @@ function Heading() {
                     marginRight: "10px",
                   }}
                 >
+                  <Avatar
+                    size="30"
+                    round={true}
+                    src={user.photoURL}
+                    style={{
+                      border: "1px solid #c6c6c6",
+                      cursor: "pointer",
+                      marginRight: "5px",
+                    }}
+                  />
                   My Page
                 </Link>
                 <Navbar.Text
@@ -137,7 +164,7 @@ function Heading() {
                     textDecoration: "none",
                     marginRight: "10px",
                     cursor: "pointer",
-                    paddingTop: "0px",
+                    paddingTop: "2px",
                     paddingBottom: "0px",
                     fontWeight: "bold",
                   }}

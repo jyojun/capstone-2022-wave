@@ -9,6 +9,7 @@ const UserRouter = require("./Router/user.js");
 const PostRouter = require("./Router/post.js");
 const RepleRouter = require("./Router/reple.js");
 const PlaceRouter = require("./Router/place.js");
+const PlaceRepleRouter = require("./Router/placeReple.js");
 
 app.use(express.static(path.join(__dirname, "../frontend/build"))); // static 폴더를 사용
 app.use("/image", express.static("./image")); // image 파일을 server 아래 image폴더 안에서 사용
@@ -20,6 +21,7 @@ app.use("/api/user", UserRouter);
 app.use("/api/post", PostRouter);
 app.use("/api/reple", RepleRouter);
 app.use("/api/place", PlaceRouter);
+app.use("/api/placeReple", PlaceRepleRouter);
 
 app.listen(port, () => {
   mongoose

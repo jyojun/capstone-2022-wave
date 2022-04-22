@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Avatar from "react-avatar";
 import firebase from "../../firebase.js";
+import { MyPageDiv } from "../../Style/MyPageCSS.js";
 
 function MyPage() {
   const user = useSelector((state) => state.user);
@@ -69,9 +70,10 @@ function MyPage() {
       alert("회원만 볼 수 있습니다.");
       navigate("/login");
     }
+    console.log(user);
   }, [user]);
   return (
-    <div>
+    <MyPageDiv>
       {ProfileUser ? (
         <div style={{ width: "100%", height: "100vh" }}>
           <form
@@ -111,7 +113,7 @@ function MyPage() {
       ) : (
         <div>해당 유저가 없습니다.</div>
       )}
-    </div>
+    </MyPageDiv>
   );
 }
 

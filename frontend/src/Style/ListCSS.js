@@ -44,8 +44,13 @@ const ListItem = styled.div`
     }
     p.time {
       color: grey;
-      font-size: 13px; 
+      font-size: 13px;
     }
+  }
+  div.repleNum {
+    display: flex;
+    justify-content: end;
+  }
 `;
 
 export { ListDiv, ListItem };

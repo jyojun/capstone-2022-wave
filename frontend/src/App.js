@@ -58,7 +58,7 @@ function App() {
       <Footer
         copyrightIcon
         height={100}
-        bgColor={"#98EBE8"}
+        bgColor={"silver"}
         copyrightText
         copyrightIconStyle={{ color: "white", fontSize: 20, marginRight: 10 }}
         copyrightTextStyle={{ color: "white", fontSize: 20, marginRight: 10 }}

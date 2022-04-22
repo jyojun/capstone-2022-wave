@@ -4,6 +4,7 @@ import { PlacesDiv } from "../../Style/PlaceCSS.js";
 import { BtnDiv } from "../../Style/DetailCSS";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Grid, Item } from "@mui/material";
 function Places() {
   const [Places, setPlaces] = useState([]);
   useEffect(() => {
@@ -40,15 +41,21 @@ function Places() {
           </Link>
         </button>
       </BtnDiv>
-      <div className="row">
+      <Grid container spacing={1}>
         {Places.map((place, idx) => {
           return (
-            <div key={idx} className="col-sm-12 col-md-6 col-lg-3">
+            <Grid key={idx} item lg={3} md={6} xs={6}>
               <Place place={place} />
-            </div>
+            </Grid>
           );
         })}
-      </div>
+      </Grid>
+      <div
+        style={{
+          borderBottom: "1px solid grey",
+          boxShadow: "0px -5px 5px grey",
+        }}
+      ></div>
     </PlacesDiv>
   );
 }

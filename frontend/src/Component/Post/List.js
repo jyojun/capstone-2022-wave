@@ -4,6 +4,7 @@ import { ListDiv, ListItem } from "../../Style/ListCSS";
 import { BtnDiv } from "../../Style/DetailCSS";
 import Avatar from "react-avatar";
 import moment from "moment";
+import CommentIcon from "@mui/icons-material/Comment";
 import "moment/locale/ko"; // 한국시간으로 설정
 
 function List(props) {
@@ -69,6 +70,15 @@ function List(props) {
               </div>
 
               <p>{post.content}</p>
+              <div className="repleNum">
+                <CommentIcon
+                  style={{
+                    color: "grey",
+                    marginRight: "5px",
+                  }}
+                />
+                <p>{post.repleNum}</p>
+              </div>
             </Link>
           </ListItem>
         );

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import "@fontsource/roboto";
 
 const HomeDiv = styled.div`
   width: 100%;

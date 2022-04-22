@@ -5,6 +5,7 @@ import { PostDiv, Post, BtnDiv } from "../../Style/DetailCSS";
 import { useSelector } from "react-redux";
 import Avatar from "react-avatar";
 import moment from "moment";
+import CommentIcon from "@mui/icons-material/Comment";
 
 function Detail(props) {
   let params = useParams();
@@ -67,6 +68,15 @@ function Detail(props) {
             />
           ) : null}
           <p>{props.PostInfo.content}</p>
+          <div className="repleNum">
+            <CommentIcon
+              style={{
+                color: "grey",
+                marginRight: "5px",
+              }}
+            />
+            <p>{props.PostInfo.repleNum}</p>
+          </div>
         </Post>
         {user.uid === props.PostInfo.author.uid && (
           <BtnDiv>

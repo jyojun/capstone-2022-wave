@@ -3,6 +3,9 @@ import { Card, Button } from "react-bootstrap";
 import { PlaceItemDiv, PlacesDiv, DetailDiv } from "../../Style/PlaceCSS";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import CommentIcon from "@mui/icons-material/Comment";
+import PlaceRepleArea from "../PlaceReple/PlaceRepleArea";
+import MapArea from "../Map/MapArea";
 
 function PlaceDetail() {
   const [PlaceInfo, setPlaceInfo] = useState({});
@@ -18,7 +21,7 @@ function PlaceDetail() {
         alert("장소 정보를 불러오는데 실패하였습니다.");
       }
     });
-  }, [PlaceInfo]);
+  }, []);
   return (
     <DetailDiv>
       <PlaceItemDiv>
@@ -30,8 +33,14 @@ function PlaceDetail() {
             <br></br>
             <p style={{ fontWeight: "bold" }}>Place Info</p>
             <Card.Text>{PlaceInfo.detail}</Card.Text>
+            <div className="repleNum">
+              <CommentIcon style={{ color: "grey", marginRight: "5px" }} />
+              <p>{PlaceInfo.repleNum}</p>
+            </div>
           </Card.Body>
         </Card>
+        <MapArea address={PlaceInfo.address} name={PlaceInfo.name} />
+        <PlaceRepleArea placeId={PlaceInfo._id} />
       </PlaceItemDiv>
     </DetailDiv>
   );

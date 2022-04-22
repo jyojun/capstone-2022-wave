@@ -45,14 +45,18 @@ const Post = styled.div`
         margin-bottom: 0px;
         color: darkgrey;
       }
-      
     }
     p.time {
       color: grey;
-      font-size: 13px; 
+      font-size: 13px;
     }
+  }
   p {
     margin-bottom: 10px;
+  }
+  div.repleNum {
+    display: flex;
+    justify-content: end;
   }
 `;
 

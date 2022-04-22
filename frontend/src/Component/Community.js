@@ -87,6 +87,7 @@ function Community() {
           variant="outline-secondary"
           title={Sort}
           id="input-group-dropdown-1"
+          style={{}}
         >
           <Dropdown.Item onClick={() => setSort("최신순")}>
             최신순
