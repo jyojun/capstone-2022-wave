@@ -4,6 +4,7 @@ import firebase from "../../firebase.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import GoogleIcon from "@mui/icons-material/Google";
 
 function Register() {
   const [Name, setName] = useState("");
@@ -84,6 +85,16 @@ function Register() {
   return (
     <LoginDiv>
       <form>
+        <div
+          style={{
+            borderBottom: "1px solid grey",
+            marginBottom: "1rem",
+            textAlign: "center",
+          }}
+        >
+          <h3 style={{ marginBottom: "1rem" }}>회원 가입</h3>
+        </div>
+
         <label>이름</label>
         <input
           type="name"
@@ -94,7 +105,7 @@ function Register() {
         />
         {NameInfo}
         <button onClick={(e) => NameCheckFunc(e)}>닉네임 중복검사</button>
-        <label>Email</label>
+        <label>이메일</label>
         <input
           type="email"
           value={Email}
@@ -102,7 +113,7 @@ function Register() {
             setEmail(e.currentTarget.value);
           }}
         />
-        <label>Password</label>
+        <label>비밀번호</label>
         <input
           type="password"
           value={Password}
@@ -111,7 +122,7 @@ function Register() {
             setPassword(e.currentTarget.value);
           }}
         />
-        <label>Password Check</label>
+        <label>비밀번호 확인</label>
         <input
           type="password"
           value={PasswordCheck}
@@ -123,6 +134,45 @@ function Register() {
         <button disabled={Flag} onClick={(e) => RegisterFunc(e)}>
           회원가입
         </button>
+
+        <div
+          style={{
+            marginTop: "2rem",
+            marginBottom: "2rem",
+            borderTop: "1px solid grey",
+          }}
+        ></div>
+        <button
+          style={{
+            color: "black",
+            backgroundColor: "white",
+            border: "2px solid grey",
+          }}
+        >
+          <GoogleIcon style={{ marginRight: "5px" }} />
+          Google로 회원가입
+        </button>
+        <div
+          className="register"
+          style={{
+            display: "flex",
+            justifyContent: "end",
+            marginTop: "15px",
+            marginRight: "5px",
+          }}
+        >
+          <a
+            style={{
+              cursor: "pointer",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/login");
+            }}
+          >
+            이미 계정이 있나요? 로그인
+          </a>
+        </div>
       </form>
     </LoginDiv>
   );

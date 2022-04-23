@@ -11,7 +11,7 @@ const PlacesDiv = styled.div`
 `;
 
 const DetailDiv = styled.div`
-  padding-top: 1rem;
+  padding-top: 5rem;
   padding-bottom: 1rem;
   max-width: 1000px;
   margin: 0 auto;

@@ -4,8 +4,11 @@ const LoginDiv = styled.div`
   width: 50%;
   max-width: 360px;
   margin: 0 auto;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  label {
+    margin-top: 10px;
+  }
   form {
     width: 100%;
     padding: 20px;
@@ -19,7 +22,7 @@ const LoginDiv = styled.div`
     input {
       border-radius: 10px;
       border: 1px solid #c6c6c6;
-      padding: 5px;
+      padding: 10px;
       margin-bottom: 10px;
 
       &:active,
@@ -28,11 +31,11 @@ const LoginDiv = styled.div`
       }
     }
     button {
-      border-radius: 15px;
-      padding: 5px 10px;
-      background-color: black;
+      padding: 10px 10px;
+      border-radius: 5px;
+      background-color: #6bc4c7;
       color: white;
-      border: 1px solid black;
+      border: 1px solid #6bc4c7;
       margin-top: 10px;
       &:hover {
         background-color: white;

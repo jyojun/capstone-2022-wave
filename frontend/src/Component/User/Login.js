@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginDiv from "../../Style/UserCSS.js";
+import mainLogo from "../../pecus_logo.png";
+import GoogleIcon from "@mui/icons-material/Google";
 
 import firebase from "../../firebase.js";
 import { useSelector } from "react-redux";
@@ -46,7 +48,28 @@ function Login() {
   return (
     <LoginDiv>
       <form>
-        <label>Email</label>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginBottom: "2rem",
+            marginTop: "2rem",
+          }}
+        >
+          <img style={{ width: "50%" }} src={mainLogo} />
+          <p
+            style={{
+              width: "50%",
+              fontFamily: "georgia sans-serif",
+              textAlign: "center",
+              marginTop: "1rem",
+            }}
+          >
+            Welcome to Petcus Now Join Us
+          </p>
+        </div>
         <input
           type="email"
           value={Email}
@@ -54,8 +77,8 @@ function Login() {
           onChange={(e) => {
             setEmail(e.currentTarget.value);
           }}
+          placeholder="email"
         />
-        <label>Password</label>
         <input
           type="password"
           value={Password}
@@ -63,17 +86,41 @@ function Login() {
           onChange={(e) => {
             setPassword(e.currentTarget.value);
           }}
+          placeholder="password"
         />
         {ErrorMsg != "" && <p>{ErrorMsg}</p>}
         <button onClick={(e) => SignInFunc(e)}>로그인</button>
         <button
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("/register");
+          style={{
+            color: "black",
+            backgroundColor: "white",
+            border: "2px solid grey",
           }}
         >
-          회원가입
+          <GoogleIcon style={{ marginRight: "5px" }} />
+          Google로 로그인
         </button>
+        <div
+          className="register"
+          style={{
+            display: "flex",
+            justifyContent: "end",
+            marginTop: "15px",
+            marginRight: "5px",
+          }}
+        >
+          <a
+            style={{
+              cursor: "pointer",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/register");
+            }}
+          >
+            회원가입
+          </a>
+        </div>
       </form>
     </LoginDiv>
   );

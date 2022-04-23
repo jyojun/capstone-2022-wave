@@ -75,7 +75,16 @@ function MyPage() {
   return (
     <MyPageDiv>
       {ProfileUser ? (
-        <div style={{ width: "100%", height: "100vh" }}>
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <h3>{ProfileUser.displayName}의 프로필 정보</h3>
           <form
             style={{
               width: "50%",

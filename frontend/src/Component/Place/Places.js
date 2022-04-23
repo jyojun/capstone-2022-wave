@@ -19,6 +19,9 @@ function Places() {
 
   return (
     <PlacesDiv>
+      <h3 style={{ fontWeight: "bold", marginLeft: "1rem", marginTop: "3rem" }}>
+        펫 플레이스
+      </h3>
       <BtnDiv>
         <button
           style={{
@@ -44,7 +47,7 @@ function Places() {
       <Grid container spacing={1}>
         {Places.map((place, idx) => {
           return (
-            <Grid key={idx} item lg={3} md={6} xs={6}>
+            <Grid key={idx} item lg={3} md={6} xs={12}>
               <Place place={place} />
             </Grid>
           );

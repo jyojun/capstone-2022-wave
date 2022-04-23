@@ -99,18 +99,23 @@ function Community() {
       </SearchSortDiv>
 
       <List PostList={PostList} />
-      {LoadMore ? (
-        <button
-          style={{
-            marginBottom: "10vh",
-          }}
-          onClick={() => getPostLoadMore()}
-        >
-          더 보기
-        </button>
-      ) : (
-        <div>더이상 불러올 글이 없습니다.</div>
-      )}
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        {LoadMore ? (
+          <button
+            style={{
+              marginBottom: "10vh",
+              borderRadius: "5px",
+              border: "1px solid grey",
+              padding: "5px 5px",
+            }}
+            onClick={() => getPostLoadMore()}
+          >
+            더 보기
+          </button>
+        ) : (
+          <div>더이상 불러올 글이 없습니다.</div>
+        )}
+      </div>
     </div>
   );
 }

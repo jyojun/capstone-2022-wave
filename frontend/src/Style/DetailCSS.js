@@ -20,6 +20,7 @@ const SpinnerDiv = styled.div`
 `;
 
 const Post = styled.div`
+  margin-top: 5rem;
   width: 100%;
   height: auto;
   background: #ffffff;

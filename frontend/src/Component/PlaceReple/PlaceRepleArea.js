@@ -9,7 +9,14 @@ function PlaceRepleArea(props) {
 
   return (
     <PlaceRepleAreaDiv>
-      {user.accessToken && <PlaceRepleUpload placeId={props.placeId} />}
+      <div style={{ fontWeight: "bold" }}>장소 리뷰</div>
+      {user.accessToken ? (
+        <PlaceRepleUpload placeId={props.placeId} />
+      ) : (
+        <div style={{ textAlign: "center " }}>
+          로그인후에 후기를 작성할 수 있습니다.
+        </div>
+      )}
       <PlaceRepleList placeId={props.placeId} />
     </PlaceRepleAreaDiv>
   );

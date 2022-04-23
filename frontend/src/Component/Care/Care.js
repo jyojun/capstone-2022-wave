@@ -1,7 +1,11 @@
 import React from "react";
 
 function Care() {
-  return <div>펫 케어 페이지 입니다.</div>;
+  return (
+    <h3 style={{ marginTop: "5rem", textAlign: "center" }}>
+      펫 케어 페이지 준비중입니다....
+    </h3>
+  );
 }
 
 export default Care;
