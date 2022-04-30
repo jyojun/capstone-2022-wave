@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Avatar from "react-avatar";
 import firebase from "../../firebase.js";
 import { MyPageDiv } from "../../Style/MyPageCSS.js";
+import PetUpload from "../Pet/PetUpload.js";
+import PetList from "../Pet/PetList.js";
 
 function MyPage() {
   const user = useSelector((state) => state.user);
@@ -78,7 +80,6 @@ function MyPage() {
         <div
           style={{
             width: "100%",
-            height: "100vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -121,6 +122,12 @@ function MyPage() {
         </div>
       ) : (
         <div>해당 유저가 없습니다.</div>
+      )}
+      {ProfileUser && (
+        <div style={{ marginTop: "5rem" }} className="petList">
+          <PetList ProfileUser={ProfileUser} />
+          <Link to="/petUpload">펫 추가하기</Link>
+        </div>
       )}
     </MyPageDiv>
   );

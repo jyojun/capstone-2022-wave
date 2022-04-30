@@ -7,17 +7,31 @@ const setUpload = require("../Util/upload.js");
 // 회원가입
 router.post("/register", (req, res) => {
   let temp = req.body;
+  User.findOne({ displayName: req.body.displayName })
+    .exec()
+    .then((doc) => {
+      let check = true;
+    });
   Counter.findOne({ name: "counter" })
     .then((doc) => {
       temp.userNum = doc.userNum;
-      const userData = new User(req.body);
-      userData.save().then(() => {
-        Counter.updateOne({ name: "counter" }, { $inc: { userNum: 1 } }).then(
-          () => {
-            res.status(200).json({ success: true });
+      User.findOne({ displayName: req.body.displayName }) // 이미 유저가 있다면 회원가입 실패
+        .exec()
+        .then((doc) => {
+          if (doc) {
+            res.status(200).json({ success: false, check: false });
+          } else {
+            const userData = new User(req.body);
+            userData.save().then(() => {
+              Counter.updateOne(
+                { name: "counter" },
+                { $inc: { userNum: 1 } }
+              ).then(() => {
+                res.status(200).json({ success: true });
+              });
+            });
           }
-        );
-      });
+        });
     })
     .catch((err) => {
       console.log(err);

@@ -63,6 +63,42 @@ function Register() {
     });
   };
 
+  const GoogleRegister = async (e) => {
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    let createdUser = await firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        let token = result.credential.accessToken;
+        let user = result.user;
+        console.log(result.user);
+        let body = {
+          eamil: result.user.multiFactor.user.email,
+          displayName: result.user.multiFactor.user.displayName,
+          uid: result.user.multiFactor.user.uid,
+          photoURL: result.user.multiFactor.user.photoURL,
+        };
+        axios.post("/api/user/register", body).then((res) => {
+          setFlag(false);
+          if (res.data.success) {
+            // 회원가입 성공시
+            console.log("게정 생성 성공");
+          } else {
+            // 회원가입 실패시
+            return alert("회원가입 실패");
+          }
+        });
+      })
+      .catch((err) => {
+        let errCode = err.code;
+        let errMessage = err.message;
+
+        console.log(errMessage);
+      });
+  };
+
   const NameCheckFunc = (e) => {
     e.preventDefault();
     if (!Name) {
@@ -143,6 +179,7 @@ function Register() {
           }}
         ></div>
         <button
+          onClick={GoogleRegister}
           style={{
             color: "black",
             backgroundColor: "white",

@@ -68,7 +68,7 @@ function List(props) {
                   {SetTime(post.createdAt, post.updatedAt)}
                 </p>
               </div>
-
+              <img style={{ width: "100%" }} src={post.image} />
               <p>{post.content}</p>
               <div className="repleNum">
                 <CommentIcon

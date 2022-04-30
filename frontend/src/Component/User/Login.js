@@ -34,6 +34,26 @@ function Login() {
     }
   };
 
+  const GoogleLogin = async (e) => {
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    let createdUser = await firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        let token = result.credential.accessToken;
+        let user = result.user;
+        console.log(result.user);
+      })
+      .catch((err) => {
+        let errCode = err.code;
+        let errMessage = err.message;
+
+        console.log(errMessage);
+      });
+  };
+
   useEffect(() => {
     if (user.accessToken) {
       navigate("/");
@@ -91,6 +111,7 @@ function Login() {
         {ErrorMsg != "" && <p>{ErrorMsg}</p>}
         <button onClick={(e) => SignInFunc(e)}>로그인</button>
         <button
+          onClick={GoogleLogin}
           style={{
             color: "black",
             backgroundColor: "white",

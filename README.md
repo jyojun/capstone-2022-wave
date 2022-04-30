@@ -34,7 +34,7 @@
 
 ### II. 시스템 구조도
 
-![시스템구조도](https://pecus2022.s3.ap-northeast-2.amazonaws.com/Untitled+Diagram.jpg)
+![시스템구조도](https://pecus2022.s3.ap-northeast-2.amazonaws.com/%E1%84%8B%E1%85%B0%E1%86%B8+%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%83%E1%85%A9.jpg)
 
 <br>
 

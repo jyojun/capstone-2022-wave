@@ -44,10 +44,10 @@ function PlaceUpload(props) {
       .post("/api/place/submit", body)
       .then((res) => {
         if (res.data.success) {
-          alert("글 작성이 완료");
+          alert("장소 등록이 완료");
           navigate("/place");
         } else {
-          alert("글 작성 실패");
+          alert("장소 등록 실패");
         }
       })
       .catch((err) => {
