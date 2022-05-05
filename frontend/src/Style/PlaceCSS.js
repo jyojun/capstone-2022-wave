@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 const PlacesDiv = styled.div`
-  padding-top: 5rem;
   padding-bottom: 1rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -38,4 +37,40 @@ const PlaceItemDiv = styled.div`
   }
 `;
 
-export { PlacesDiv, PlaceItemDiv, DetailDiv };
+const PlaceSearchSortDiv = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  input {
+    width: 14rem;
+    border: none;
+    border-bottom: 1px solid black;
+    ::placeholder {
+      color: #408fb9;
+      font-size: 12px;
+    }
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    border: none;
+    background-color: white;
+    margin-right: 0.5rem;
+  }
+
+  .DropdownButton {
+    padding: 0px 5px;
+    margin-right: 2.5rem;
+    border: 1px solid #c6c6c6;
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+`;
+
+export { PlacesDiv, PlaceItemDiv, DetailDiv, PlaceSearchSortDiv };

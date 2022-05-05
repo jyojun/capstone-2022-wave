@@ -80,7 +80,7 @@ function Community() {
               if (e.keyCode === 13) SearchHandler();
             }}
           />
-          <button>검색</button>
+          <button onClick={SearchHandler}>검색</button>
         </div>
 
         <DropdownButton

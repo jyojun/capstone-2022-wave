@@ -9,6 +9,7 @@ import axios from "axios";
 
 function PlaceUpload(props) {
   const [Name, setName] = useState("");
+  const [Category, setCategory] = useState("");
   const [Address, setAddress] = useState("");
   const [Detail, setDetail] = useState("");
   const [PlaceImage, setPlaceImage] = useState("");
@@ -35,6 +36,7 @@ function PlaceUpload(props) {
 
     let body = {
       name: Name,
+      cateogry: Category,
       address: Address,
       detail: Detail,
       image: PlaceImage,
@@ -65,6 +67,21 @@ function PlaceUpload(props) {
           type="text"
           value={Name}
         />
+        <label>카테고리</label>
+        <select
+          onChange={(e) => {
+            setCategory(e.currentTarget.value);
+          }}
+          value={Category}
+        >
+          <option value="" selected disabled hidden>
+            선택해주세요.
+          </option>
+          <option value="펜션">펜션</option>
+          <option value="식당">식당</option>
+          <option value="카페">카페</option>
+          <option value="공원">공원</option>
+        </select>
         <label htmlFor="">장소 이미지</label>
         <input type="file" accept="image/" onChange={(e) => ImageUpload(e)} />
         <label htmlFor="">위치명</label>

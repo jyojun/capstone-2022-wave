@@ -33,7 +33,24 @@ router.post("/submit", (req, res) => {
 
 // 모든 장소정보 리스트
 router.post("/list", (req, res) => {
-  Place.find()
+  console.log(req.body);
+  let sort = {};
+
+  if (req.body.sort === "기본순") {
+    // 기본순
+    sort.createdAt = -1; // 기본순으로 내림차순
+  } else {
+    // 후기순
+    sort.repleNum = -1; // 후기순 내림차순
+  }
+  Place.find({
+    $and: [{ category: { $regex: req.body.category } }],
+    $or: [
+      { name: { $regex: req.body.searchTerm } },
+      { address: { $regex: req.body.searchTerm } },
+    ],
+  })
+    .sort(sort)
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, placeList: doc });

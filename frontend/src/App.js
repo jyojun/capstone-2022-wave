@@ -34,6 +34,7 @@ function App() {
         dispatch(clearUser());
       }
     });
+    console.log(user);
   }, [user]);
 
   return (
