@@ -8,10 +8,12 @@ import { Grid, Item } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import PlaceCategory from "./PlaceCategory";
 import { DropdownButton, Dropdown } from "react-bootstrap";
+import AreaFilter from "./AreaFilter";
 
 function Places() {
   const [Places, setPlaces] = useState([]);
   const [Category, setCategory] = useState("");
+  const [Area, setArea] = useState("");
   const [SearchTerm, setSearchTerm] = useState("");
   const [Sort, setSort] = useState("기본순");
   // useEffect(() => {
@@ -34,6 +36,7 @@ function Places() {
       sort: Sort,
       searchTerm: SearchTerm,
       category: Category,
+      area: Area,
     };
     axios
       .post("/api/place/list", body)
@@ -49,8 +52,8 @@ function Places() {
 
   useEffect(() => {
     getPostList(); // sort가 바뀔때마다 getPostList 호출
-    console.log(Sort, Category);
-  }, [Sort, Category]);
+    console.log(Sort, Category, Area);
+  }, [Sort, Category, Area]);
 
   const SearchHandler = () => {
     getPostList();
@@ -59,6 +62,7 @@ function Places() {
   return (
     <>
       <PlaceCategory setCategory={setCategory} />
+      <AreaFilter setArea={setArea} />
       <PlacesDiv>
         <PlaceSearchSortDiv>
           <div className="search">
@@ -122,7 +126,7 @@ function Places() {
         <Grid container spacing={1}>
           {Places.map((place, idx) => {
             return (
-              <Grid key={idx} item lg={3} md={6} xs={12}>
+              <Grid key={idx} item lg={3} md={6} sm={6} xs={12}>
                 <Place place={place} />
               </Grid>
             );

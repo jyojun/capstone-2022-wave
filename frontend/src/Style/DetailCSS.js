@@ -25,12 +25,13 @@ const Post = styled.div`
   height: auto;
   background: #ffffff;
   padding: 30px 20px;
-  box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.03),
-    0px 15px 12px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.03),
+  //   0px 15px 12px rgba(0, 0, 0, 0.1);
   h1 {
+    font-size: 23px;
     font-weight: bold;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(205, 205, 205);
+    border-bottom: 1px solid #ededed;
   }
   .author {
     display: flex;
@@ -44,12 +45,13 @@ const Post = styled.div`
       p {
         margin-left: 10px;
         margin-bottom: 0px;
+        font-size: 14px;
         color: darkgrey;
       }
     }
     p.time {
-      color: grey;
-      font-size: 13px;
+      color: #6e6c6c;
+      font-size: 11px;
     }
   }
   p {
@@ -69,8 +71,10 @@ const BtnDiv = styled.div`
   button {
     border-radius: 5px;
     padding: 5px 10px;
+    font-size: 13px;
     font-weight: bold;
     &.edit {
+      font-size: 10px;
       background-color: white;
       color: black;
       border: 1px solid black;
@@ -81,6 +85,7 @@ const BtnDiv = styled.div`
       }
     }
     &.delete {
+      font-size: 10px;
       margin-left: 10px;
       background-color: red;
       color: white;

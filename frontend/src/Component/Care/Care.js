@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Care() {
   return (
-    <h3 style={{ marginTop: "5rem", textAlign: "center" }}>
-      펫 케어 페이지 준비중입니다....
-    </h3>
+    <div style={{ marginTop: "5rem" }}>
+      <Link to="/careUpload">글쓰기</Link>
+    </div>
   );
 }
 

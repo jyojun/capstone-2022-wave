@@ -50,6 +50,7 @@ router.post("/list", (req, res) => {
   }
   Post.find({
     // 제목이나 내용에 일치하는 내용이 있는지 확인 $regex객체에 포함하는 검색내용
+    $and: [{ category: { $regex: req.body.category } }],
     $or: [
       { title: { $regex: req.body.searchTerm } },
       { content: { $regex: req.body.searchTerm } },

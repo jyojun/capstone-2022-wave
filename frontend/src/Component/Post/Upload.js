@@ -7,6 +7,7 @@ import ImageUpload from "./ImageUpload";
 
 function Upload(props) {
   const [Title, setTitle] = useState("");
+  const [Category, setCategory] = useState("");
   const [Content, setContent] = useState("");
   const [Image, setImage] = useState("");
 
@@ -28,6 +29,7 @@ function Upload(props) {
 
     let body = {
       title: Title,
+      category: Category,
       content: Content,
       image: Image,
       uid: user.uid,
@@ -60,6 +62,22 @@ function Upload(props) {
           type="text"
           value={Title}
         />
+        <label
+          onChange={(e) => {
+            setCategory(e.target.value);
+          }}
+          value={Category}
+        >
+          카테고리
+        </label>
+        <select>
+          <option value="노하우 전수">노하우 전수</option>
+          <option value="정보 공유">정보 공유</option>
+          <option value="고민있어요">고민있어요</option>
+          <option value="우리 아이 자랑">우리 아이 자랑</option>
+          <option value="집사와의 하루">집사와의 하루</option>
+          <option value="산책갈래">산책갈래</option>
+        </select>
         <ImageUpload setImage={setImage} />
         <label htmlFor="">내용</label>
         <textarea

@@ -16,6 +16,7 @@ import Register from "./Component/User/Register";
 import PostArea from "./Component/Post/PostArea";
 import Places from "./Component/Place/Places";
 import Care from "./Component/Care/Care";
+import CareUpload from "./Component/Care/CareUpload";
 import MyPage from "./Component/User/MyPage";
 import Community from "./Component/Community";
 import PlaceUpload from "./Component/Place/PlaceUpload";
@@ -57,6 +58,7 @@ function App() {
         <Route path="/place/:placeNum" element={<PlaceDetail />} />
         <Route path="/placeUpload" element={<PlaceUpload />} />
         <Route path="/care" element={<Care />} />
+        <Route path="/careUpload" element={<CareUpload />} />
       </Routes>
       <Footer
         copyrightIcon

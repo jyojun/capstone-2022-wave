@@ -21,9 +21,12 @@ function List(props) {
         style={{
           textAlign: "center",
           padding: "1rem",
+          fontFamily: "roboto",
+          fontSize: "22px",
+          marginTop: "12px",
         }}
       >
-        커뮤니티
+        <strong>펫커스</strong>소식
       </h3>
       <BtnDiv>
         <button
@@ -35,7 +38,8 @@ function List(props) {
           <Link
             to="/upload"
             style={{
-              color: "black",
+              color: "#6E6C6C",
+              fontSize: "13px",
               textDecoration: "none",
               border: "none",
             }}
@@ -55,11 +59,11 @@ function List(props) {
               <div className="author">
                 <div>
                   <Avatar
-                    size="40"
+                    size="35"
                     round={true}
                     src={post.author.photoURL}
                     style={{
-                      border: "1px solid #c6c6c6",
+                      border: "2px solid #DBDBDB",
                     }}
                   />
                   <p>{post.author.displayName}</p>
@@ -68,13 +72,23 @@ function List(props) {
                   {SetTime(post.createdAt, post.updatedAt)}
                 </p>
               </div>
-              <img style={{ width: "100%" }} src={post.image} />
-              <p>{post.content}</p>
+              <img
+                style={{
+                  width: "100%",
+                  marginBottom: "20px",
+                  marginTop: "10px",
+                }}
+                src={post.image}
+              />
+              <p style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}>
+                {post.content}
+              </p>
               <div className="repleNum">
                 <CommentIcon
                   style={{
-                    color: "grey",
+                    color: "#4DAAC3",
                     marginRight: "5px",
+                    marginTop: "2.5px",
                   }}
                 />
                 <p>{post.repleNum}</p>

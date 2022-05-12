@@ -9,24 +9,33 @@ function Place({ place }) {
   return (
     <PlaceItemDiv>
       <a href={`/place/${place.placeNum}`}>
-        <Card>
-          <Card.Img variant="top" src={place.image} />
+        <Card
+          style={{
+            border: "none",
+          }}
+        >
           <Card.Body>
             <Card.Title
               style={{
                 fontWeight: "bold",
+                marginBottom: "10px",
               }}
             >
               {place.name}
+              <Card.Text
+                style={{
+                  marginTop: "5px",
+                  color: "grey",
+                  fontSize: "13px",
+                }}
+              >
+                {place.address.split(" ").splice(0, 2).join(" ")}
+              </Card.Text>
             </Card.Title>
-            <Card.Text
-              style={{
-                color: "grey",
-                fontSize: "13px",
-              }}
-            >
-              {place.address}
-            </Card.Text>
+            <Card.Img
+              src={place.image}
+              style={{ aspectRatio: "1/1", objectFig: "cover" }}
+            ></Card.Img>
             <div className="repleNum">
               <CommentIcon
                 style={{ color: "grey", marginRight: "5px" }}

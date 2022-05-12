@@ -33,7 +33,6 @@ router.post("/submit", (req, res) => {
 
 // 모든 장소정보 리스트
 router.post("/list", (req, res) => {
-  console.log(req.body);
   let sort = {};
 
   if (req.body.sort === "기본순") {
@@ -44,7 +43,10 @@ router.post("/list", (req, res) => {
     sort.repleNum = -1; // 후기순 내림차순
   }
   Place.find({
-    $and: [{ category: { $regex: req.body.category } }],
+    $and: [
+      { category: { $regex: req.body.category } },
+      { address: { $regex: req.body.area } },
+    ],
     $or: [
       { name: { $regex: req.body.searchTerm } },
       { address: { $regex: req.body.searchTerm } },

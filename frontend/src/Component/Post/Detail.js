@@ -46,12 +46,12 @@ function Detail(props) {
           <div className="author">
             <div>
               <Avatar
-                size="40"
+                size="35"
                 round={true}
                 src={props.PostInfo.author.photoURL}
                 style={{
-                  border: "1px solid #c6c6c6",
-                  marginRight: "5px",
+                  border: "2px solid #DEDEDE",
+                  marginRight: "3px",
                 }}
               />
               <p>{props.PostInfo.author.displayName}</p>
@@ -67,12 +67,15 @@ function Detail(props) {
               style={{ width: "100%", height: "auto" }}
             />
           ) : null}
-          <p>{props.PostInfo.content}</p>
+          <p style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}>
+            {props.PostInfo.content}
+          </p>
           <div className="repleNum">
             <CommentIcon
               style={{
-                color: "grey",
+                color: "#4DDAAC3",
                 marginRight: "5px",
+                marginTop: "2.5px",
               }}
             />
             <p>{props.PostInfo.repleNum}</p>

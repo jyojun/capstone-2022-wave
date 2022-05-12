@@ -25,34 +25,39 @@ function PlaceDetail() {
   }, []);
   return (
     <DetailDiv>
-      <PlaceItemDiv>
-        <Card style={{}}>
-          <Card.Img variant="top" src={PlaceInfo.image} />
-          <Card.Body>
+      <Card style={{ border: "none" }}>
+        <div className="detail-top" style={{ display: "flex" }}>
+          <Card.Img src={PlaceInfo.image} />
+          <div style={{ display: "flex", flexDirection: "column" }}>
             <Card.Title>{PlaceInfo.name}</Card.Title>
             <Card.Text>{PlaceInfo.address}</Card.Text>
-            <div className="repleNum">
-              <CommentIcon style={{ color: "grey", marginRight: "5px" }} />
-              <p>{PlaceInfo.repleNum}</p>
-            </div>
-            <br></br>
-            <p style={{ fontWeight: "bold" }}>장소 정보</p>
-            <Card.Text>{PlaceInfo.detail}</Card.Text>
-            <p style={{ fontWeight: "bold", marginTop: "3rem" }}>장소 지도</p>
-            <MapArea address={PlaceInfo.address} name={PlaceInfo.name} />
-          </Card.Body>
-        </Card>
-        <div className="repleNum">
-          <Button
-            onClick={() => {
-              navigate("/place");
-            }}
-          >
-            글목록
-          </Button>
+          </div>
         </div>
-        <PlaceRepleArea placeId={PlaceInfo._id} />
-      </PlaceItemDiv>
+
+        <Card.Body>
+          <div className="repleNum">
+            <CommentIcon style={{ color: "grey", marginRight: "5px" }} />
+            <p>{PlaceInfo.repleNum}</p>
+          </div>
+          <br></br>
+          <p style={{ fontWeight: "bold" }}>장소 정보</p>
+          <Card.Text style={{ whiteSpace: "pre-wrap" }}>
+            {PlaceInfo.detail}
+          </Card.Text>
+          <p style={{ fontWeight: "bold", marginTop: "3rem" }}>장소 지도</p>
+          <MapArea address={PlaceInfo.address} name={PlaceInfo.name} />
+        </Card.Body>
+      </Card>
+      <div className="repleNum">
+        <Button
+          onClick={() => {
+            navigate("/place");
+          }}
+        >
+          글목록
+        </Button>
+      </div>
+      <PlaceRepleArea placeId={PlaceInfo._id} />
     </DetailDiv>
   );
 }

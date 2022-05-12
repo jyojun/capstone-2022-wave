@@ -24,7 +24,7 @@ function Heading() {
     <Navbar
       style={{
         backgroundColor: "white",
-        boxShadow: "1px 1px 10px 1px rgba(200, 200, 200)",
+        boxShadow: "1px 1px 10px 1px #DBDBDB",
         position: "fixed",
         top: "0",
         left: "0",
@@ -41,7 +41,7 @@ function Heading() {
             <img
               src={mainLogo}
               width="100"
-              height="30"
+              height="26"
               className="d-inline-block align-top"
               style={{
                 backgroundColor: "white",

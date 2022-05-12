@@ -7,10 +7,14 @@ function PlaceCategory(props) {
     <PlaceCategoryDiv>
       <Navbar
         style={{
+          width: "100%",
           backgroundColor: "black",
           textDecoration: "none",
+
+          whiteSpace: "nowrap",
+          display: "inline-block",
+          overflowX: "auto",
         }}
-        expand="lg"
       >
         <Container>
           <Nav className="me-auto">

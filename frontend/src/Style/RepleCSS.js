@@ -18,7 +18,7 @@ const RepleUploadDiv = styled.div`
     grid-template-columns: 7fr 1fr;
     grid-template-rows: 50px;
     @media (max-width: 756px) {
-      grid-template-columns: 4fr 1fr;
+      grid-template-columns: 4.5fr 0.5fr;
       grid-template-rows: 40px;
     }
 
@@ -37,8 +37,9 @@ const RepleUploadDiv = styled.div`
       height: 100%;
       border-radius: 0px 10px 10px 0px;
       border: 0.5px solid #c6c6c6;
-      font-weight: bold;
-      background-color: #c6c6c6;
+      font-size: 15px;
+      color: white;
+      background-color: #4daac3;
       &:hover,
       &:active {
         border: 0.5px solid darkgrey;

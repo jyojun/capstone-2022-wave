@@ -11,9 +11,12 @@ const UploadForm = styled.form`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  select {
+    margin-bottom: 2rem;
+  }
   #title {
     border-radius: 10px;
-    border: 1px solid #c6c6c6;
+    border: 1px solid #dbdbdb;
     padding: 10px;
     margin-bottom: 15px;
     &:active,
@@ -24,8 +27,9 @@ const UploadForm = styled.form`
   textarea {
     min-height: 350px;
     resize: none;
+    margin-top: 7px;
     border-radius: 10px;
-    border: 1px solid #c6c6c6;
+    border: 1px solid #dbdbdb;
     padding: 10px;
     &:active,
     &:focus {
@@ -35,13 +39,13 @@ const UploadForm = styled.form`
       width: 10px;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: gray;
+      background-color: #9A9DB;
       border-radius: 15px;
       background-clip: padding-box;
       border: 2px solid transparent;
     }
     &::-webkit-scrollbar-track {
-      background-color: #c6c6c6;
+      background-color: #dbdbdb;
       border-radius: 15px;
       box-shadow: inset 0px 0px 5px whitesmoke;
     }
@@ -59,7 +63,7 @@ const UploadButtonDiv = styled.div`
   button {
     border-radius: 5px;
     padding: 5px 10px;
-    background-color: black;
+    background-color: #4daac3;
     color: white;
     border: none;
     &:hover {

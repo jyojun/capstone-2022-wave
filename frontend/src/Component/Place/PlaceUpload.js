@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { UploadDiv, UploadForm, UploadButtonDiv } from "../../Style/UploadCSS";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import DaumPostcode from "react-daum-postcode";
-import Address from "./AddressUpload";
 import AddressUpload from "./AddressUpload";
 import axios from "axios";
 
