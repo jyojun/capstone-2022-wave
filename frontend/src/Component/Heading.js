@@ -70,6 +70,7 @@ function Heading() {
                 textDecoration: "none",
                 marginRight: "10px",
                 fontWeight: "bold",
+                fontSize: "13px",
               }}
             >
               Home
@@ -81,6 +82,7 @@ function Heading() {
                 textDecoration: "none",
                 marginRight: "10px",
                 fontWeight: "bold",
+                fontSize: "13px",
               }}
             >
               Pet Care
@@ -92,6 +94,7 @@ function Heading() {
                 textDecoration: "none",
                 marginRight: "10px",
                 fontWeight: "bold",
+                fontSize: "13px",
               }}
             >
               Pet Place
@@ -103,6 +106,7 @@ function Heading() {
                 textDecoration: "none",
                 marginRight: "10px",
                 fontWeight: "bold",
+                fontSize: "13px",
               }}
             >
               Community
@@ -120,6 +124,7 @@ function Heading() {
                     textDecoration: "none",
                     marginRight: "10px",
                     fontWeight: "bold",
+                    fontSize: "13px",
                   }}
                 >
                   Login
@@ -130,6 +135,7 @@ function Heading() {
                     color: "black",
                     textDecoration: "none",
                     fontWeight: "bold",
+                    fontSize: "13px",
                   }}
                 >
                   Register
@@ -144,29 +150,21 @@ function Heading() {
                     textDecoration: "none",
                     fontWeight: "bold",
                     marginRight: "10px",
+                    fontSize: "13px",
                   }}
                 >
-                  <Avatar
-                    size="30"
-                    round={true}
-                    src={user.photoURL}
-                    style={{
-                      border: "1px solid #c6c6c6",
-                      cursor: "pointer",
-                      marginRight: "5px",
-                    }}
-                  />
                   My Page
                 </Link>
                 <Navbar.Text
                   style={{
                     color: "black",
                     textDecoration: "none",
-                    marginRight: "10px",
+                    marginRight: "1px",
                     cursor: "pointer",
-                    paddingTop: "2px",
+                    paddingTop: "0px",
                     paddingBottom: "0px",
                     fontWeight: "bold",
+                    fontSize: "13px",
                   }}
                   onClick={() => LogoutHandler()}
                 >
