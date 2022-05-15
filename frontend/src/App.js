@@ -22,6 +22,7 @@ import Community from "./Component/Community";
 import PlaceUpload from "./Component/Place/PlaceUpload";
 import PlaceDetail from "./Component/Place/PlaceDetail";
 import PetUpload from "./Component/Pet/PetUpload";
+import ChatRoom from "./Component/Message/ChatRoom";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +36,6 @@ function App() {
         dispatch(clearUser());
       }
     });
-    console.log(user);
   }, [user]);
 
   return (
@@ -59,6 +59,7 @@ function App() {
         <Route path="/placeUpload" element={<PlaceUpload />} />
         <Route path="/care" element={<Care />} />
         <Route path="/careUpload" element={<CareUpload />} />
+        <Route path={`/care/message/:carePostNum`} element={<ChatRoom />} />
       </Routes>
       <Footer
         copyrightIcon

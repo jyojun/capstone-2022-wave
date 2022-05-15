@@ -7,6 +7,18 @@ const PlacesDiv = styled.div`
   @media (max-width: 1200px) {
     width: 90%;
   }
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 3;
+      transform: none;
+    }
+  }
+
+  -webkit-animation: fadein 2s;
 `;
 
 const DetailDiv = styled.div`
@@ -29,6 +41,19 @@ const DetailDiv = styled.div`
       width: 100%;
     }
   }
+
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 3;
+      transform: none;
+    }
+  }
+
+  -webkit-animation: fadein 2s;
 `;
 
 const PlaceItemDiv = styled.div`

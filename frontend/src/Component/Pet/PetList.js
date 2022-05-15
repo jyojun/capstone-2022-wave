@@ -7,6 +7,7 @@ import axios from "axios";
 
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
+import { Avatar } from "@mui/material";
 
 function PetList(props) {
   const [PetList, setPetList] = useState([]);
@@ -33,39 +34,44 @@ function PetList(props) {
       }}
     >
       <h3 style={{ color: "grey" }}> 마이펫 리스트</h3>
-      <div style={{ width: "50%" }}>
+      <div
+        style={{
+          width: "50%",
+          display: "flex",
+          textDecoration: "none",
+          whiteSpace: "nowrap",
+          display: "flex",
+          overflowX: "auto",
+          "-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+      >
         {PetList.map((pet, idx) => {
           return (
-            <Card key={idx} style={{ display: "flex", flexDirection: "row" }}>
-              <Card.Img
-                style={{ width: "50%" }}
-                variant="top"
+            <div>
+              <Avatar
+                key={idx}
+                round={true}
                 src={pet.image}
+                style={{
+                  border: "1px solid #c6c6c6",
+                  width: "100px",
+                  height: "100px",
+                  marginRight: "10px",
+                  cursor: "pointer",
+                }}
               />
-              <Card.Body>
-                <Card.Title
-                  style={{
-                    fontWeight: "bold",
-                  }}
-                >
-                  {pet.name}
-                  {pet.sex === "male" ? <MaleIcon /> : <FemaleIcon />}
-                </Card.Title>
-                <Card.Text
-                  style={{
-                    color: "grey",
-                    fontSize: "13px",
-                  }}
-                >
-                  {pet.type}
-                </Card.Text>
-                <Card.Text>{pet.birthday}</Card.Text>
-                <Card.Text>몸무게 : {pet.weight}kg</Card.Text>
-                <Card.Text>
-                  중성화 여부 : {pet.neutrality ? "o" : "x"}
-                </Card.Text>
-              </Card.Body>
-            </Card>
+              <p
+                style={{
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  fontFamily: "roboto",
+                }}
+              >
+                {pet.name}
+              </p>
+            </div>
           );
         })}
       </div>

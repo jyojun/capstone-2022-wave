@@ -34,7 +34,7 @@ function Place({ place }) {
             </Card.Title>
             <Card.Img
               src={place.image}
-              style={{ aspectRatio: "1/1", objectFig: "cover" }}
+              style={{ aspectRatio: "1/1", objectFit: "cover" }}
             ></Card.Img>
             <div className="repleNum">
               <CommentIcon

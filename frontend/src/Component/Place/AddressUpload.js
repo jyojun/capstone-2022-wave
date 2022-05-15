@@ -13,21 +13,17 @@ const AddressUpload = (props) => {
   const postCodeStyle = {
     display: "block",
     position: "absolute",
-    top: "20%",
-    width: "400px",
-    height: "400px",
-    padding: "7px",
+    margin: "0 auto",
+    border: "1px solid black",
+    top: "40%",
+    right: "10%",
+    width: "25rem",
+    height: "25rem",
     zIndex: 100,
   };
 
   return (
-    <>
-      <DaumPostcode
-        style={postCodeStyle}
-        autoClose
-        onComplete={onCompletePost}
-      />
-    </>
+    <DaumPostcode style={postCodeStyle} autoClose onComplete={onCompletePost} />
   );
 };
 

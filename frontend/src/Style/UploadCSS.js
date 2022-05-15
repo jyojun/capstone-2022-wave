@@ -1,13 +1,18 @@
 import styled from "@emotion/styled";
 
 const UploadDiv = styled.div`
-  width: 100%;
+  max-width: 756px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 5rem;
   margin-bottom: 5rem;
+  @media (max-width: 756px) {
+    width: 90%;
+  }
 `;
 
 const UploadForm = styled.form`
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -53,6 +58,28 @@ const UploadForm = styled.form`
   label {
     font-weight: bold;
     margin-top: 10px;
+  }
+  div.pet-click-div {
+    button {
+      div {
+        &:hover {
+          border: 5px solid skyblue;
+        }
+      }
+    }
+  }
+
+  div.address-input {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7fr 1fr 1fr;
+    grid-gap: 10px;
+    grid-template-rows: 62px;
+    overflow: auto;
+    @media (max-width: 756px) {
+      grid-template-columns: 4.5fr 0.5fr 0.5fr;
+      grid-template-rows: 40px;
+    }
   }
 `;
 

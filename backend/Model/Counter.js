@@ -6,6 +6,7 @@ const counterSchema = new mongoose.Schema(
     postNum: Number,
     userNum: Number,
     placeNum: Number,
+    carePostNum: Number,
   },
   {
     collection: "Counter",

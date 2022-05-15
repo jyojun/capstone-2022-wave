@@ -91,4 +91,15 @@ router.post("/profile/update", (req, res) => {
     });
 });
 
+router.post("/getUserId", (req, res) => {
+  User.findOne({ uid: req.body.uid })
+    .exec()
+    .then((userInfo) => {
+      res.status(200).json({ success: true, userId: userInfo._id });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
+    });
+});
+
 module.exports = router;

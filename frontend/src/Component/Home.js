@@ -2,9 +2,10 @@ import React from "react";
 import Banner from "./Element/Banner";
 import mainLogo from "../pecus_logo.png";
 import { Grid } from "@mui/material";
+import { HomeDiv } from "../Style/HomeCSS";
 function Home() {
   return (
-    <div
+    <HomeDiv
       style={{
         display: "flex",
         flexDirection: "column",
@@ -85,7 +86,7 @@ function Home() {
           Join us
         </p>
       </div>
-    </div>
+    </HomeDiv>
   );
 }
 

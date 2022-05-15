@@ -5,6 +5,18 @@ const PlaceRepleAreaDiv = styled.div`
   margin-top: 2rem;
   width: 100%
   margin: 0 auto !important;
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 3;
+      transform: none;
+    }
+  }
+
+  -webkit-animation: fadein 2s;
 `;
 
 const PlaceRepleUploadDiv = styled.div`
@@ -55,10 +67,36 @@ const PlaceRepleUploadDiv = styled.div`
       border: 1px solid #c6c6c6;
     }
   }
+
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 3;
+      transform: none;
+    }
+  }
+
+  -webkit-animation: fadein 2s;
 `;
 
 const PlaceRepleListDiv = styled.div`
   margin-top: 1rem;
+
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 3;
+      transform: none;
+    }
+  }
+
+  -webkit-animation: fadein 2s;
 `;
 
 const PlaceRepleContentDiv = styled.div`
