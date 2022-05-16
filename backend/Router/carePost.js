@@ -6,7 +6,7 @@ const { User } = require("../Model/User.js");
 const { Pet } = require("../Model/Pet.js");
 const setUpload = require("../Util/upload.js");
 
-router.post("/submit", (req, res) => {
+router.post("/submit", async (req, res) => {
   let temp = {
     title: req.body.title,
     content: req.body.content,
@@ -15,7 +15,7 @@ router.post("/submit", (req, res) => {
     endDate: req.body.endDate,
   };
   //   console.log(req.body);
-  Counter.findOne({ name: "counter" })
+  await Counter.findOne({ name: "counter" })
     .exec()
     .then((counter) => {
       temp.carePostNum = counter.carePostNum;
@@ -47,8 +47,8 @@ router.post("/submit", (req, res) => {
 });
 
 // 저장한 post 모두 list에 보여주기
-router.post("/list", (req, res) => {
-  CarePost.find()
+router.post("/list", async (req, res) => {
+  await CarePost.find()
     .populate("author") // Post 정보를 찾을 때, author의 정보도 모두 추적해서 찾음.
     .populate("pet")
     .exec()
@@ -60,8 +60,8 @@ router.post("/list", (req, res) => {
     });
 });
 
-router.post("/getPostInfo", (req, res) => {
-  CarePost.findOne({ carePostNum: req.body.carePostNum })
+router.post("/getPostInfo", async (req, res) => {
+  await CarePost.findOne({ carePostNum: req.body.carePostNum })
     .populate("author")
     .exec()
     .then((carePostInfo) => {

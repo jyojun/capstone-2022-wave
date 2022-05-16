@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const config = require("./config/key.js");
 
 const http = require("http").Server(app);
@@ -32,8 +32,12 @@ app.use("/api/pet", PetRouter);
 app.use("/api/carePost", CarePostRouter);
 app.use("/api/message", MessageRouter);
 
-io.on("connection", () => {
+io.on("connection", (socket) => {
   console.log("a user is connected");
+  socket.emit("message", {
+    name: "hyojun",
+    message: "hello",
+  });
 });
 
 mongoose

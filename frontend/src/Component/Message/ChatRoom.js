@@ -14,6 +14,10 @@ function ChatRoom() {
 
   const params = useParams();
 
+  var socket = io.connect();
+  socket.on("message", function (data) {
+    console.log(data);
+  });
   useEffect(() => {
     let body = {
       carePostNum: parseInt(params.carePostNum),

@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const { Message } = require("../Model/Message.js");
 const { User } = require("../Model/User.js");
+const { io } = require("../index.js");
 
-router.post("/submit", (req, res) => {
+router.post("/submit", async (req, res) => {
   let temp = {
     content: req.body.content,
     carePostId: req.body.carePostId,
   };
-  User.findOne({ uid: req.body.receiver })
+  await User.findOne({ uid: req.body.receiver })
     .exec()
     .then((userInfo) => {
       temp.receiver = userInfo._id; // receiver id
@@ -27,8 +28,8 @@ router.post("/submit", (req, res) => {
     });
 });
 
-router.post("/getMessages", (req, res) => {
-  User.findOne({ uid: req.body.user_uid })
+router.post("/getMessages", async (req, res) => {
+  await User.findOne({ uid: req.body.user_uid })
     .exec()
     .then((userInfo) => {
       Message.find({
@@ -41,6 +42,28 @@ router.post("/getMessages", (req, res) => {
         .then((doc) => {
           res.status(200).json({ success: true, messages: doc });
         });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
+    });
+});
+
+router.post("/getSenders", async (req, res) => {
+  await Message.find({ carePostId: req.body.carePostId })
+    .populate("receiver")
+    .populate("sender")
+    .exec()
+    .then((doc) => {
+      let senders = [];
+      doc.map((d) => {
+        if (d.receiver.uid === req.body.user_uid) {
+          senders.push(d.sender);
+        }
+      });
+      let set = new Set(senders);
+      let unique_senders = [...set];
+
+      res.status(200).json({ success: true, senders: unique_senders });
     })
     .catch((err) => {
       res.status(400).json({ success: false });

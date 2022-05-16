@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { ChatRoomDiv } from "../../Style/MessageCSS";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import MessageBox from "./MessageBox";
 
 function WriterChatRoom() {
   const [Content, setContent] = useState("");
   const [CarePostInfo, setCarePostInfo] = useState({});
+  const [Senders, setSenders] = useState([]);
   const [Messages, setMessages] = useState([]);
+  const [CurrentTarget, setCurrentTarget] = useState({});
   const user = useSelector((state) => state.user);
 
   const params = useParams();
@@ -23,8 +26,24 @@ function WriterChatRoom() {
         alert("작성자를 불러올 수 없습니다.");
       }
     });
+    getSenderList();
     getMessages();
   }, [CarePostInfo, user]);
+  const getSenderList = async () => {
+    if (CarePostInfo && user.uid) {
+      let body = {
+        carePostId: CarePostInfo._id,
+        user_uid: user.uid,
+      };
+      axios.post("/api/message/getSenders", body).then((res) => {
+        if (res.data.success) {
+          setSenders(res.data.senders);
+        } else {
+          alert("");
+        }
+      });
+    }
+  };
   const getMessages = async () => {
     // console.log(CarePostInfo);
     if (CarePostInfo) {
@@ -48,10 +67,9 @@ function WriterChatRoom() {
     let body = {
       content: Content,
       sender: user.uid,
-      receiver: CarePostInfo.author.uid,
+      receiver: CurrentTarget.uid,
       carePostId: CarePostInfo._id,
     };
-    console.log(body);
     axios.post("/api/message/submit", body).then((res) => {
       if (res.data.success) {
         getMessages();
@@ -63,18 +81,31 @@ function WriterChatRoom() {
   };
   return (
     <ChatRoomDiv>
-      <div className="container">
-        {Messages.map((message, idx) => {
-          if (message.sender.uid === user.uid) {
+      <div className="container" style={{ overflow: "scroll" }}>
+        {CurrentTarget === {} ? (
+          <MessageBox sender={CurrentTarget} messages={Messages} />
+        ) : (
+          Senders.map((sender, idx) => {
             return (
-              <p style={{ textAlign: "right", background: "yellow" }} key={idx}>
-                {message.content}
-              </p>
+              <div
+                key={idx}
+                className="each-chatroom"
+                style={{ backgroundColor: "red" }}
+              >
+                <button
+                  className="join-chatroom"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentTarget(sender);
+                  }}
+                >
+                  <h5>{sender.displayName}</h5>
+                  <MessageBox sender={sender} messages={Messages} />
+                </button>
+              </div>
             );
-          } else {
-            return <p key={idx}>{message.content}</p>;
-          }
-        })}
+          })
+        )}
       </div>
       <form onSubmit={onSubmit}>
         <input

@@ -32,13 +32,13 @@ function CarePostItem({ post }) {
         {user.uid !== post.author.uid ? (
           <div className="button">
             <button>
-              <Link to={`/care/message/${post.carePostNum}`}>Message</Link>
+              <Link to={`message/${post.carePostNum}`}>Message</Link>
             </button>
           </div>
         ) : (
           <div className="button">
             <button>
-              <Link to={`/care/message/${post.carePostNum}`}>
+              <Link to={`author_message/${post.carePostNum}`}>
                 메세지 확인하기
               </Link>
             </button>

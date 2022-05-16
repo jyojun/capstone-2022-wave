@@ -23,6 +23,7 @@ import PlaceUpload from "./Component/Place/PlaceUpload";
 import PlaceDetail from "./Component/Place/PlaceDetail";
 import PetUpload from "./Component/Pet/PetUpload";
 import ChatRoom from "./Component/Message/ChatRoom";
+import WriterChatRoom from "./Component/Message/WriterChatRoom";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,6 +61,10 @@ function App() {
         <Route path="/care" element={<Care />} />
         <Route path="/careUpload" element={<CareUpload />} />
         <Route path={`/care/message/:carePostNum`} element={<ChatRoom />} />
+        <Route
+          path={`/care/author_message/:carePostNum`}
+          element={<WriterChatRoom />}
+        />
       </Routes>
       <Footer
         copyrightIcon

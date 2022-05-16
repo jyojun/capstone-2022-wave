@@ -16,7 +16,6 @@ function CarePostList() {
       }
     });
   }, [CarePostList]);
-  console.log(CarePostList);
   return (
     <CarePostListDiv>
       <Grid container spacing={1}>

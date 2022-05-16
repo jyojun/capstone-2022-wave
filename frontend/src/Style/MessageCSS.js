@@ -33,5 +33,8 @@ const ChatRoomDiv = styled.div`
     grid-template-columns: 4fr 1fr;
     grid-gap: 10px;
   }
+  button.join-chatroom {
+    width: 100%;
+  }
 `;
 export { ChatRoomDiv };
