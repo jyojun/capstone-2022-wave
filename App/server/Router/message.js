@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { Message } = require("../Model/Message.js");
 const { User } = require("../Model/User.js");
-const { io } = require("../index.js");
 
 router.post("/submit", async (req, res) => {
   let temp = {

@@ -1,8 +1,6 @@
-.env
-node_modules
-backend/config/dev.js
-backend/node_modules
-backend/package-lock.json
-frontend/node_modules
-frontend/package-lock.json
-frontend/src/config/dev.js
+/App/server/config/dev.js
+/App/node_modules
+/App/package-lock.json
+/App/frontend/node_modules
+/App/frontend/package-lock.js
+/App/frontend/src/config/dev.js

@@ -3,21 +3,21 @@ const path = require("path");
 const mongoose = require("mongoose");
 const app = express();
 const port = process.env.PORT || 5000;
-const config = require("./config/key.js");
+const config = require("./server/config/key.js");
 
 const http = require("http").Server(app);
 var io = require("socket.io")(http);
 
-const UserRouter = require("./Router/user.js");
-const PostRouter = require("./Router/post.js");
-const RepleRouter = require("./Router/reple.js");
-const PlaceRouter = require("./Router/place.js");
-const PlaceRepleRouter = require("./Router/placeReple.js");
-const PetRouter = require("./Router/pet.js");
-const CarePostRouter = require("./Router/carePost.js");
-const MessageRouter = require("./Router/message.js");
+const UserRouter = require("./server/Router/user.js");
+const PostRouter = require("./server/Router/post.js");
+const RepleRouter = require("./server/Router/reple.js");
+const PlaceRouter = require("./server/Router/place.js");
+const PlaceRepleRouter = require("./server/Router/placeReple.js");
+const PetRouter = require("./server/Router/pet.js");
+const CarePostRouter = require("./server/Router/carePost.js");
+const MessageRouter = require("./server/Router/message.js");
 
-app.use(express.static(path.join(__dirname, "../frontend/build"))); // static 폴더를 사용
+app.use(express.static(path.join(__dirname, "./frontend/build"))); // static 폴더를 사용
 app.use("/image", express.static("./image")); // image 파일을 server 아래 image폴더 안에서 사용
 // client에서 보내는 request.body 정보를 얻기위해 body parser를 사용
 app.use(express.json());
@@ -63,9 +63,9 @@ var server = http.listen(port, () => {
 // });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
 });
