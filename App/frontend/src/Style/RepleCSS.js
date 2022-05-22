@@ -16,14 +16,14 @@ const RepleUploadDiv = styled.div`
     width: 100%;
     display: grid;
     grid-template-columns: 7fr 1fr;
-    grid-template-rows: 50px;
+    grid-template-rows: 45px;
     @media (max-width: 756px) {
       grid-template-columns: 4.5fr 0.5fr;
       grid-template-rows: 40px;
     }
 
     input {
-      padding: 10px;
+      padding: 7px;
       height: 100%;
       border-radius: 10px 0px 0px 10px;
       border: 0.5px solid #c6c6c6;
@@ -65,11 +65,12 @@ const RepleListDiv = styled.div`
 `;
 
 const RepleContentDiv = styled.div`
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.03), 0px 7.5px 6px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid #dbdbdb;
   padding: 20px 10px;
   margin-bottom: 10px;
   .author {
     display: flex;
+
     margin-bottom: 5px;
     justify-content: space-between;
     align-items: center;

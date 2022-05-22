@@ -32,13 +32,13 @@ app.use("/api/pet", PetRouter);
 app.use("/api/carePost", CarePostRouter);
 app.use("/api/message", MessageRouter);
 
-io.on("connection", (socket) => {
-  console.log("a user is connected");
-  socket.emit("message", {
-    name: "hyojun",
-    message: "hello",
-  });
-});
+// io.on("connection", (socket) => {
+//   console.log("a user is connected");
+//   socket.emit("message", {
+//     name: "hyojun",
+//     message: "hello",
+//   });
+// });
 
 mongoose
   .connect(config.mongoURI)

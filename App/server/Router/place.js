@@ -9,15 +9,18 @@ router.post("/submit", (req, res) => {
   let temp = {
     name: req.body.name,
     address: req.body.address,
+    category: req.body.category,
     detail: req.body.detail,
     image: req.body.image,
   };
-  //   console.log(req.body);
+  console.log(req.body);
+  console.log(temp);
   Counter.findOne({ name: "counter" })
     .exec()
     .then((counter) => {
       temp.placeNum = counter.placeNum;
       const CommunityPlace = new Place(temp);
+      console.log(temp);
       CommunityPlace.save().then(() => {
         Counter.updateOne({ name: "counter" }, { $inc: { placeNum: 1 } }).then(
           () => {

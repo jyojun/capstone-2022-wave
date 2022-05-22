@@ -73,9 +73,9 @@ function Detail(props) {
           <div className="repleNum">
             <CommentIcon
               style={{
-                color: "#4DDAAC3",
+                color: "#4DAAC3",
                 marginRight: "5px",
-                marginTop: "2.5px",
+                marginTop: "10px",
               }}
             />
             <p>{props.PostInfo.repleNum}</p>

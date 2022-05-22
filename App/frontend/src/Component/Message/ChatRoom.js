@@ -5,32 +5,38 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import io from "socket.io-client";
+import MessageBox from "./MessageBox";
 
 function ChatRoom() {
   const [Content, setContent] = useState("");
   const [CarePostInfo, setCarePostInfo] = useState({});
+  const [Author, setAuthor] = useState({});
   const [Messages, setMessages] = useState([]);
   const user = useSelector((state) => state.user);
 
   const params = useParams();
 
   var socket = io.connect();
-  socket.on("message", function (data) {
-    console.log(data);
-  });
+
   useEffect(() => {
+    getPostInfo();
+    getMessages();
+  }, [CarePostInfo, user]);
+
+  const getPostInfo = async () => {
     let body = {
       carePostNum: parseInt(params.carePostNum),
     };
-    axios.post("/api/carePost/getPostInfo", body).then((res) => {
+    await axios.post("/api/carePost/getPostInfo", body).then((res) => {
       if (res.data.success) {
         setCarePostInfo(res.data.carePostInfo);
+        setAuthor(res.data.carePostInfo.author);
       } else {
         alert("작성자를 불러올 수 없습니다.");
       }
     });
-    getMessages();
-  }, [CarePostInfo, user]);
+  };
+
   const getMessages = async () => {
     // console.log(CarePostInfo);
     if (CarePostInfo) {
@@ -57,61 +63,31 @@ function ChatRoom() {
       receiver: CarePostInfo.author.uid,
       carePostId: CarePostInfo._id,
     };
-    console.log(body);
-    axios.post("/api/message/submit", body).then((res) => {
-      if (res.data.success) {
-        getMessages();
-        setContent("");
-      } else {
-        alert("메세지 전송에 실패하였습니다.");
-      }
-    });
+
+    if (Content === "") {
+      alert("메세지 내용을 입력하세요.");
+    } else {
+      axios.post("/api/message/submit", body).then((res) => {
+        if (res.data.success) {
+          getMessages();
+          setContent("");
+        } else {
+          alert("메세지 전송에 실패하였습니다.");
+        }
+      });
+    }
   };
   return (
     <ChatRoomDiv>
-      <div className="container" style={{ overflow: "scroll" }}>
-        {Messages.map((message, idx) => {
-          if (message.sender.uid === user.uid) {
-            return (
-              <div
-                key={idx}
-                className="message-box"
-                style={{
-                  display: "flex",
-                  background: "skyblue",
-                  marginBottom: "1rem",
-                  justifyContent: "right",
-                }}
-              >
-                <p>{message.content}</p>
-              </div>
-            );
-          } else {
-            return (
-              <div
-                key={idx}
-                className="message-box"
-                style={{
-                  display: "flex",
-                  background: "whitesmoke",
-                  marginBottom: "1rem",
-                }}
-              >
-                <Avatar src={message.sender.photoURL} />
-                <p>{message.content}</p>
-              </div>
-            );
-          }
-        })}
-      </div>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          value={Content}
-          onChange={(e) => setContent(e.target.value)}
+      <div className="container">
+        <MessageBox
+          sender={Author}
+          messages={Messages}
+          onSubmit={onSubmit}
+          Content={Content}
+          setContent={setContent}
         />
-        <button type="submit">Send</button>
-      </form>
+      </div>
     </ChatRoomDiv>
   );
 }

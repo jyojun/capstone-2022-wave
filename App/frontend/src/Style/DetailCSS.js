@@ -56,10 +56,10 @@ const Post = styled.div`
       align-items: center;
       justify-content: center;
       p {
-        margin-left: 10px;
+        margin-left: 7px;
         margin-bottom: 0px;
         font-size: 14px;
-        color: darkgrey;
+        color: black;
       }
     }
     p.time {
@@ -68,6 +68,7 @@ const Post = styled.div`
     }
   }
   p {
+    margin-top: 10px;
     margin-bottom: 10px;
   }
   div.repleNum {

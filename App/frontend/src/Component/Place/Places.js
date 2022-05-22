@@ -68,7 +68,7 @@ function Places() {
           <div className="search">
             <input
               type="text"
-              placeholder="검색할 장소나 지역을 입력하세요."
+              placeholder="지역이나 장소를 검색해봐요!"
               value={SearchTerm}
               onChange={(e) => setSearchTerm(e.currentTarget.value)}
               onKeyDown={(e) => {
@@ -79,7 +79,7 @@ function Places() {
               }}
             />
             <button onClick={SearchHandler}>
-              <SearchIcon />
+              <SearchIcon fontSize="small" style={{ color: "#408fb9" }} />
             </button>
           </div>
 
@@ -91,38 +91,41 @@ function Places() {
             className="DropdownButton"
             title={Sort}
             id="input-group-dropdown-1"
-            style={{ fontSize: "13px" }}
+            style={{ color: "#707070" }}
           >
-            <option style={{ fontSize: "13px" }} value="기본순">
-              기본순
-            </option>
-            <option style={{ fontSize: "13px" }} value="후기순">
-              후기순
-            </option>
+            <option value="기본순">기본순</option>
+            <option value="후기순">후기순</option>
           </select>
         </PlaceSearchSortDiv>
+
         <BtnDiv>
           <button
             style={{
-              backgroundColor: "white",
+              backgroundColor: "transparent",
               border: "none",
+              padding: "0",
+              marginRight: "15px",
             }}
           >
             <Link
               to="/placeUpload"
               style={{
-                color: "black",
+                color: "#4DAAC3",
+                fontSize: "11px",
                 textDecoration: "none",
-                border: "1px solid grey",
-                borderRadius: "5px",
-                padding: "5px",
+                border: "1.5px solid rgba(77,170,195, 0.5)",
+                borderRadius: "10px",
+                padding: "7px",
+                boxShadow: "0px 0px 3px rgba(77,170,195, 0.5)",
+                transitionDuration: "0.3s",
               }}
               className="write"
             >
-              장소등록(관리자용)
+              + 장소 등록하기
             </Link>
           </button>
         </BtnDiv>
+
         <Grid container spacing={1}>
           {Places.map((place, idx) => {
             return (
@@ -133,10 +136,12 @@ function Places() {
           })}
         </Grid>
         <div
-          style={{
-            borderBottom: "1px solid grey",
-            boxShadow: "0px -5px 5px grey",
-          }}
+          style={
+            {
+              // borderBottom: "1px solid grey",
+              // boxShadow: "0px -5px 5px grey",
+            }
+          }
         ></div>
       </PlacesDiv>
     </>

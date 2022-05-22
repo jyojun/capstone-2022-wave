@@ -9,6 +9,7 @@ router.post("/submit", (req, res) => {
   let temp = {
     title: req.body.title,
     content: req.body.content,
+    category: req.body.category,
     image: req.body.image,
   };
   //   console.log(req.body);
@@ -108,14 +109,24 @@ router.post("/delete", (req, res) => {
     });
 });
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "image/");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, `${Date.now()}-${file.originalname}`);
-//   },
-// });
+// 집사와의 일상
+router.post("/daily", (req, res) => {
+  let sort = {};
+
+  sort.createdAt = -1; // 최신순으로 내림차순
+
+  Post.find({ category: "집사와의 하루" })
+    .populate("author") // Post 정보를 찾을 때, author의 정보도 모두 추적해서 찾음.
+    .sort(sort)
+    .limit(2) // 한번에 찾을 document 숫자
+    .exec()
+    .then((doc) => {
+      res.status(200).json({ success: true, postList: doc });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
+    });
+});
 
 router.post("/image/upload", setUpload("pecus2022/post"), (req, res, next) => {
   res.status(200).json({ success: true, filePath: res.req.file.location });

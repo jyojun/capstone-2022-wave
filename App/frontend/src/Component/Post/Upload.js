@@ -21,6 +21,9 @@ function Upload(props) {
     }
   });
 
+  useEffect(() => {
+    console.log(Category);
+  }, [Category]);
   const onSubmit = (e) => {
     e.preventDefault();
     if (Title === "" || Content === "") {
@@ -62,15 +65,17 @@ function Upload(props) {
           type="text"
           value={Title}
         />
-        <label
+        <label>카테고리</label>
+        <select
           onChange={(e) => {
             setCategory(e.target.value);
+            console.log(Category);
           }}
           value={Category}
         >
-          카테고리
-        </label>
-        <select>
+          <option value="" selected disabled hidden>
+            선택해주세요.
+          </option>
           <option value="노하우 전수">노하우 전수</option>
           <option value="정보 공유">정보 공유</option>
           <option value="고민있어요">고민있어요</option>

@@ -68,48 +68,52 @@ function Heading() {
               style={{
                 color: "black",
                 textDecoration: "none",
+                marginLeft: "15px",
                 marginRight: "10px",
                 fontWeight: "bold",
                 fontSize: "13px",
               }}
             >
-              Home
+              HOME
             </Link>
             <Link
               to="/care"
               style={{
                 color: "black",
                 textDecoration: "none",
+                marginLeft: "15px",
                 marginRight: "10px",
                 fontWeight: "bold",
                 fontSize: "13px",
               }}
             >
-              Pet Care
+              PET CARE
             </Link>
             <Link
               to="/place"
               style={{
                 color: "black",
                 textDecoration: "none",
+                marginLeft: "15px",
                 marginRight: "10px",
                 fontWeight: "bold",
                 fontSize: "13px",
               }}
             >
-              Pet Place
+              PET PLACE
             </Link>
             <Link
               to="/community"
               style={{
                 color: "black",
                 textDecoration: "none",
+                marginLeft: "15px",
                 marginRight: "10px",
                 fontWeight: "bold",
                 fontSize: "13px",
               }}
             >
-              Community
+              COMMUNITY
             </Link>
           </Nav>
         </Navbar.Collapse>
@@ -122,23 +126,25 @@ function Heading() {
                   style={{
                     color: "black",
                     textDecoration: "none",
+                    marginLeft: "15px",
                     marginRight: "10px",
                     fontWeight: "bold",
                     fontSize: "13px",
                   }}
                 >
-                  Login
+                  LOGIN
                 </Link>
                 <Link
                   to="/register"
                   style={{
                     color: "black",
                     textDecoration: "none",
+                    marginLeft: "15px",
                     fontWeight: "bold",
                     fontSize: "13px",
                   }}
                 >
-                  Register
+                  REGISTER
                 </Link>
               </>
             ) : (
@@ -149,16 +155,18 @@ function Heading() {
                     color: "black",
                     textDecoration: "none",
                     fontWeight: "bold",
+                    marginLeft: "15px",
                     marginRight: "10px",
                     fontSize: "13px",
                   }}
                 >
-                  My Page
+                  MY PAGE
                 </Link>
                 <Navbar.Text
                   style={{
                     color: "black",
                     textDecoration: "none",
+                    marginLeft: "15px",
                     marginRight: "1px",
                     cursor: "pointer",
                     paddingTop: "0px",
@@ -168,7 +176,7 @@ function Heading() {
                   }}
                   onClick={() => LogoutHandler()}
                 >
-                  Logout
+                  LOGOUT
                 </Navbar.Text>
               </>
             )}

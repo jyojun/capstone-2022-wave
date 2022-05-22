@@ -8,9 +8,10 @@ function PlaceCategory(props) {
       <Navbar
         style={{
           width: "100%",
+          height: "auto",
           backgroundColor: "black",
           textDecoration: "none",
-
+          fontWeight: "bold",
           whiteSpace: "nowrap",
           display: "inline-block",
           overflowX: "auto",
@@ -22,7 +23,7 @@ function PlaceCategory(props) {
               style={{ color: "white", marginRight: "3rem" }}
               href="/place"
             >
-              전체
+              ALL
             </Nav.Link>
             <Nav.Link
               onClick={() => {
@@ -30,7 +31,7 @@ function PlaceCategory(props) {
               }}
               style={{ color: "white", marginRight: "3rem" }}
             >
-              펜션
+              숙소
             </Nav.Link>
             <Nav.Link
               onClick={() => {

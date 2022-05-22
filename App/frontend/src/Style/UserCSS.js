@@ -3,6 +3,9 @@ import styled from "@emotion/styled";
 const LoginDiv = styled.div`
   width: 50%;
   max-width: 360px;
+  @media (max-width: 756px) {
+    width: 100%;
+  }
   margin: 0 auto;
   margin-top: 10rem;
   margin-bottom: 10rem;

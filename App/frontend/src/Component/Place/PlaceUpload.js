@@ -14,10 +14,11 @@ function PlaceUpload(props) {
   const [PopUp, setPopUp] = useState(false);
 
   const user = useSelector((state) => state.user);
+
+  const PlaceTypes = ["펜션", "식당", "카페", "공원"];
   let navigate = useNavigate();
 
   const ImageUpload = (e) => {
-    console.log(e.target.files);
     let formData = new FormData();
     formData.append("file", e.target.files[0]);
     axios.post("/api/place/image/upload", formData).then((res) => {
@@ -28,18 +29,23 @@ function PlaceUpload(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (Name === "" || Address === "" || Detail === "") {
+    if (
+      Name === "" ||
+      Address === "" ||
+      Detail === "" ||
+      Category === "" ||
+      PlaceImage === ""
+    ) {
       return alert("모든 항목을 채워주세요!");
     }
 
     let body = {
       name: Name,
-      cateogry: Category,
+      category: Category,
       address: Address,
       detail: Detail,
       image: PlaceImage,
     };
-
     axios
       .post("/api/place/submit", body)
       .then((res) => {
@@ -69,16 +75,15 @@ function PlaceUpload(props) {
         <select
           onChange={(e) => {
             setCategory(e.currentTarget.value);
+            console.log(Category);
           }}
           value={Category}
         >
-          <option value="" selected disabled hidden>
-            선택해주세요.
-          </option>
-          <option value="펜션">펜션</option>
-          <option value="식당">식당</option>
-          <option value="카페">카페</option>
-          <option value="공원">공원</option>
+          {PlaceTypes.map((item) => (
+            <option value={item} key={item}>
+              {item}
+            </option>
+          ))}
         </select>
         <label htmlFor="">장소 이미지</label>
         <input type="file" accept="image/" onChange={(e) => ImageUpload(e)} />

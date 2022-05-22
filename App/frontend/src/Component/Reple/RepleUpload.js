@@ -32,6 +32,7 @@ function RepleUpload(props) {
       <form>
         <input
           type="text"
+          placeholder="댓글을 달아주세요."
           value={Reple}
           onChange={(e) => setReple(e.currentTarget.value)}
         />
