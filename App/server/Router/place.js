@@ -65,6 +65,19 @@ router.post("/list", (req, res) => {
     });
 });
 
+// 모든 장소정보 리스트
+router.post("/homeList", (req, res) => {
+  Place.find()
+    .limit(10)
+    .exec()
+    .then((doc) => {
+      res.status(200).json({ success: true, placeList: doc });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
+    });
+});
+
 // 한 장소의 detail 정보
 router.post("/detail", (req, res) => {
   Place.findOne({ placeNum: Number(req.body.placeNum) })

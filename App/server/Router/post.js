@@ -85,6 +85,7 @@ router.post("/detail", (req, res) => {
 router.post("/edit", (req, res) => {
   let temp = {
     title: req.body.title,
+    category: rea.body.category,
     content: req.body.content,
     image: req.body.image,
   };
@@ -119,6 +120,42 @@ router.post("/daily", (req, res) => {
     .populate("author") // Post 정보를 찾을 때, author의 정보도 모두 추적해서 찾음.
     .sort(sort)
     .limit(2) // 한번에 찾을 document 숫자
+    .exec()
+    .then((doc) => {
+      res.status(200).json({ success: true, postList: doc });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
+    });
+});
+
+// 정보공유
+router.post("/information", (req, res) => {
+  let sort = {};
+
+  sort.createdAt = -1; // 최신순으로 내림차순
+
+  Post.find({ category: "정보공유" })
+    .populate("author") // Post 정보를 찾을 때, author의 정보도 모두 추적해서 찾음.
+    .sort(sort)
+    .limit(3) // 한번에 찾을 document 숫자
+    .exec()
+    .then((doc) => {
+      res.status(200).json({ success: true, postList: doc });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
+    });
+});
+
+// 노하우 전수
+router.post("/knowhow", (req, res) => {
+  let sort = {};
+  sort.createdAt = -1; // 최신순으로 내림차순
+  Post.find({ category: "노하우 전수" })
+    .populate("author") // Post 정보를 찾을 때, author의 정보도 모두 추적해서 찾음.
+    .sort(sort)
+    .limit(3) // 한번에 찾을 document 숫자
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, postList: doc });

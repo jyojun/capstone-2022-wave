@@ -68,16 +68,17 @@ function App() {
       </Routes>
       <Footer
         copyrightIcon
-        height={100}
-        bgColor={"silver"}
-        copyrightText
-        copyrightIconStyle={{ color: "white", fontSize: 20, marginRight: 10 }}
-        copyrightTextStyle={{ color: "white", fontSize: 20, marginRight: 10 }}
-        textStyle={{ color: "yellow", fontSize: 16, marginRight: 10 }}
-        text={"All rights reserved."}
+        height="15rem"
+        bgColor={"black"}
+        copyrightIconStyle={{ color: "white", fontSize: 16, marginRight: 10 }}
+        copyrightTextStyle={{ color: "white", fontSize: 16, marginRight: 10 }}
+        textStyle={{ color: "white", fontSize: 16, marginRight: 10 }}
+        text={"(주)펫커스 Copyright(C) Petcus. All Right Reserved"}
         position={"absolute"}
         bottom={0}
-      />
+      >
+        <div></div>
+      </Footer>
     </>
   );
 }

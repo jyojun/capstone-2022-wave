@@ -10,6 +10,7 @@ function Edit() {
   const [PostInfo, setPostInfo] = useState({});
   const [Flag, setFlag] = useState(false);
   const [Title, setTitle] = useState("");
+  const [Category, setCategory] = useState("");
   const [Content, setContent] = useState("");
   const [Image, setImage] = useState("");
   let params = useParams();
@@ -34,6 +35,7 @@ function Edit() {
   // 기존 title, content값을 저장 & 값의 변화가 생길때마다 값을 저장해줌.
   useEffect(() => {
     setTitle(PostInfo.title);
+    setCategory(PostInfo.category);
     setContent(PostInfo.content);
     setImage(PostInfo.image);
   }, [PostInfo]);
@@ -80,6 +82,24 @@ function Edit() {
           type="text"
           value={Title}
         />
+        <label>카테고리</label>
+        <select
+          onChange={(e) => {
+            setCategory(e.target.value);
+            console.log(Category);
+          }}
+          value={Category}
+        >
+          <option value="" selected disabled hidden>
+            선택해주세요.
+          </option>
+          <option value="노하우 전수">노하우 전수</option>
+          <option value="정보공유">정보공유</option>
+          <option value="고민있어요">고민있어요</option>
+          <option value="우리 아이 자랑">우리 아이 자랑</option>
+          <option value="집사와의 하루">집사와의 하루</option>
+          <option value="산책갈래">산책갈래</option>
+        </select>
         <ImageUpload setImage={setImage} />
         <label htmlFor="">내용</label>
         <textarea

@@ -12,8 +12,10 @@ const CareDiv = styled.div`
 `;
 const CarePostListDiv = styled.div`
   width: 100%;
-  background: whitesmoke;
-  padding: 10px;
+  background: white;
+  border: 2px solid #eeeeee;
+  // padding: 5px;
+  border-radius: 5px;
 
   @-webkit-keyframes fadein {
     from {
@@ -31,13 +33,15 @@ const CarePostListDiv = styled.div`
 
 const CarePostItemDiv = styled.div`
   padding: 1rem;
-  background: white;
+  background: transparent;
+  border-bottom: 2px solid #eeeeee;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-gap: 10px;
+  grid-gap: 20px;
   overflow: auto;
+  // border-radius: 5px;
   @media (max-width: 756px) {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 2fr;
   }
   div.button {
     display: flex;
@@ -53,6 +57,9 @@ const CarePostItemDiv = styled.div`
     color: #6e6c6c;
     font-size: 11px;
     margin-top: 12px;
+  }
+
+  p.time {
   }
 `;
 

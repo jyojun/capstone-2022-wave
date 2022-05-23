@@ -1,90 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BannerDiv } from "../../Style/HomeCSS.js";
 import { Carousel } from "react-bootstrap";
-import axios from "axios";
+import img1 from "./BannerImg/배너 사진1.png";
+import img2 from "./BannerImg/배너 사진2.png";
+import img3 from "./BannerImg/배너 사진3.png";
 function Banner() {
-  const [TopCafe, setTopCafe] = useState({});
-  const [TopPension, setTopPension] = useState({});
-  useEffect(() => {
-    let body = {
-      category: "카페",
-      area: "경기",
-      sort: "후기순",
-      searchTerm: "",
-    };
-    axios.post("/api/place/list", body).then((res) => {
-      if (res.data.success) {
-        setTopCafe(res.data.placeList[0]);
-      } else {
-        alert("장소 불러오는데 실패");
-      }
-    });
-  }, [TopCafe]);
-
-  useEffect(() => {
-    let body = {
-      category: "펜션",
-      area: "경기",
-      sort: "후기순",
-      searchTerm: "",
-    };
-    axios.post("/api/place/list", body).then((res) => {
-      if (res.data.success) {
-        setTopPension(res.data.placeList[0]);
-      } else {
-        alert("장소 불러오는데 실패");
-      }
-    });
-  }, [TopPension]);
   return (
     <BannerDiv
       style={{
         marginTop: "4rem",
       }}
     >
-      <div
-        style={{
-          height: "100%",
-          display: "flex",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          width: "100%",
-        }}
-      >
-        <a
-          href={`/place/${TopCafe.placeNum}`}
-          style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(${TopCafe.image})`,
-            backgroundSize: "cover",
-            textDecoration: "none",
-          }}
-        >
-          <h1 style={{ color: "black", fontWeight: "bold" }}>
-            경기도 가장 인기있는 펜션 <br />
-            {TopCafe.name}
-          </h1>
-        </a>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateRows: "1fr 1fr",
-          }}
-        >
-          <div
+      <Carousel>
+        <Carousel.Item interval={3000}>
+          <img
             style={{
-              width: "100%",
+              objectFit: "cover",
+              maxHeight: "600px",
             }}
-          ></div>
-          <div
+            className="d-block w-100"
+            src={img1}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>Petcus</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item interval={3000}>
+          <img
             style={{
-              width: "100%",
-              backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(${TopPension.image})`,
-              backgroundSize: "cover",
+              objectFit: "cover",
+              maxHeight: "600px",
             }}
-          ></div>
-        </div>
-      </div>
+            className="d-block w-100"
+            src={img2}
+            alt="Second slide"
+          />
+          <Carousel.Caption>
+            <h3>Petcus</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item interval={3000}>
+          <img
+            style={{
+              objectFit: "cover",
+              maxHeight: "600px",
+            }}
+            className="d-block w-100"
+            src={img3}
+            alt="Third slide"
+          />
+          <Carousel.Caption>
+            <h3>Petcus</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
     </BannerDiv>
   );
 }

@@ -5,7 +5,7 @@ function AreaFilter({ setArea }) {
   return (
     <AreaFilterDiv>
       <div className="top">
-        <p>Area</p>
+        <p>AREA</p>
         <p>-</p>
       </div>
       <div className="area-names">

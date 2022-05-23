@@ -30,7 +30,7 @@ function Detail(props) {
         .then((res) => {
           if (res.data.success) {
             alert("게시글이 삭제되었습니다.");
-            navigate("/list");
+            navigate("/community");
           }
         })
         .catch((err) => {

@@ -26,7 +26,7 @@ function Upload(props) {
   }, [Category]);
   const onSubmit = (e) => {
     e.preventDefault();
-    if (Title === "" || Content === "") {
+    if (Title === "" || Content === "" || Category === "" || Image === "") {
       return alert("모든 항목을 채워주세요!");
     }
 
@@ -77,7 +77,7 @@ function Upload(props) {
             선택해주세요.
           </option>
           <option value="노하우 전수">노하우 전수</option>
-          <option value="정보 공유">정보 공유</option>
+          <option value="정보공유">정보공유</option>
           <option value="고민있어요">고민있어요</option>
           <option value="우리 아이 자랑">우리 아이 자랑</option>
           <option value="집사와의 하루">집사와의 하루</option>

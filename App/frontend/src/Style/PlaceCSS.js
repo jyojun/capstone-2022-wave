@@ -168,7 +168,7 @@ const AreaFilterDiv = styled.div`
     justify-content: space-between;
     border-bottom: 2.5px solid black;
     color: black;
-    padding: 20px 5px 0px 5px;
+    padding: 15px 5px 0px 5px;
     background-color: rgb(256, 256, 256);
     // margin-top: 10px;
     // margin-bottom: 5px;

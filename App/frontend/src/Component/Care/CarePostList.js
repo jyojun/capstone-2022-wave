@@ -18,7 +18,7 @@ function CarePostList() {
   }, [CarePostList]);
   return (
     <CarePostListDiv>
-      <Grid container spacing={1}>
+      <Grid container spacing={0.5}>
         {CarePostList.map((post, idx) => {
           return (
             <Grid key={idx} item lg={12} md={12} sm={12} xs={12}>

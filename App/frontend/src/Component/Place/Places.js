@@ -53,7 +53,7 @@ function Places() {
   useEffect(() => {
     getPostList(); // sort가 바뀔때마다 getPostList 호출
     console.log(Sort, Category, Area);
-  }, [Sort, Category, Area]);
+  }, [Sort, Category, Area, Places]);
 
   const SearchHandler = () => {
     getPostList();
