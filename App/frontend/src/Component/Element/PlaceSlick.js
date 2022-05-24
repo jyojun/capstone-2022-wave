@@ -5,8 +5,10 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import LoadingCircle from "./LoadingCircle";
 
 function PlaceSlick() {
+  const [Loading, setLoading] = useState(true);
   const [Places, setPlaces] = useState([]);
   const [ShowSlides, setShowSlides] = useState(4);
   const navigate = useNavigate();
@@ -45,6 +47,7 @@ function PlaceSlick() {
     axios.post("/api/place/homeList").then((res) => {
       if (res.data.success) {
         setPlaces(res.data.placeList);
+        setLoading(false);
       } else {
         alert("장소를 불러오는 데 실패하였습니다.");
       }
@@ -75,58 +78,59 @@ function PlaceSlick() {
           <h4>이번 주말 우리집 댕댕이와 함께할 장소</h4>
           <h4 style={{ color: "#4DAAC3", marginLeft: "10px" }}>Pick</h4>
         </div>
-        <Slider style={{ margin: "0 auto" }} {...settings}>
-          {Places.map((place, idx) => {
-            return (
-              <div
-                key={idx}
-                style={{
-                  backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(${place.image})`,
-                }}
-              >
+        {!Loading ? (
+          <Slider style={{ margin: "0 auto" }} {...settings}>
+            {Places.map((place, idx) => {
+              return (
                 <div
+                  key={idx}
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    width: "15rem",
-                    height: "15rem",
                     backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(${place.image})`,
                   }}
                 >
                   <div
                     style={{
-                      color: "white",
-                      position: "absolute",
-                      marginLeft: "10px",
-                      fontSize: "10px",
-                      bottom: "30px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      width: "15rem",
+                      height: "15rem",
+                      backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(${place.image})`,
                     }}
                   >
-                    <p style={{ fontSize: "13px" }}>
-                      {place.address.split(" ").splice(0, 2).join(" ")}
-                    </p>
-                    <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                      {place.name}
-                    </p>
-
-                    <Button
-                      onClick={() => {
-                        navigate(`/place/${place.placeNum}`);
-                      }}
+                    <div
                       style={{
-                        width: "5rem",
-                        fontSize: "10px",
                         color: "white",
-                        background: "#4DAAC3",
-                        borderRadius: "20px",
+                        position: "absolute",
+                        marginLeft: "10px",
+                        fontSize: "10px",
+                        bottom: "30px",
                       }}
                     >
-                      view more
-                    </Button>
+                      <p style={{ fontSize: "13px" }}>
+                        {place.address.split(" ").splice(0, 2).join(" ")}
+                      </p>
+                      <p style={{ fontSize: "15px", fontWeight: "bold" }}>
+                        {place.name}
+                      </p>
+
+                      <Button
+                        onClick={() => {
+                          navigate(`/place/${place.placeNum}`);
+                        }}
+                        style={{
+                          width: "5rem",
+                          fontSize: "10px",
+                          color: "white",
+                          background: "#4DAAC3",
+                          borderRadius: "20px",
+                        }}
+                      >
+                        view more
+                      </Button>
+                    </div>
                   </div>
-                </div>
-                {/* <img
+                  {/* <img
                 src={place.image}
                 style={{
                   width: "15rem",
@@ -134,10 +138,16 @@ function PlaceSlick() {
                   objectFit: "cover",
                 }}
               ></img> */}
-              </div>
-            );
-          })}
-        </Slider>
+                </div>
+              );
+            })}
+          </Slider>
+        ) : (
+          <LoadingCircle
+            style={{ width: "100%", height: "100%", margin: "0 auto" }}
+          />
+        )}
+
         <div
           style={{
             width: "100%",

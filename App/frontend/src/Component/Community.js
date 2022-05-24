@@ -4,8 +4,10 @@ import axios from "axios";
 import { SearchSortDiv, CommunityDiv } from "../Style/CommunityCSS";
 import CommunityCategory from "./Post/CommunityCategory.js";
 import SearchIcon from "@mui/icons-material/Search";
+import LoadingCircle from "./Element/LoadingCircle";
 
 function Community() {
+  const [Loading, setLoading] = useState(true);
   const [PostList, setPostList] = useState([]);
   const [Sort, setSort] = useState("최신순");
   const [SearchTerm, setSearchTerm] = useState("");
@@ -50,6 +52,7 @@ function Community() {
       .then((res) => {
         if (res.data.success) {
           setPostList([...res.data.postList]);
+          setLoading(false);
           setSkip(res.data.postList.length);
           if (res.data.postList.length < 5) {
             setLoadMore(false);
@@ -65,7 +68,7 @@ function Community() {
 
   useEffect(() => {
     getPostList(); // sort가 바뀔때마다 getPostList 호출
-  }, [Sort, Category]);
+  }, [Sort, Category, PostList]);
 
   const SearchHandler = () => {
     getPostList();
@@ -112,8 +115,8 @@ function Community() {
             </option>
           </select>
         </SearchSortDiv>
+        {!Loading ? <List PostList={PostList} /> : <LoadingCircle />}
 
-        <List PostList={PostList} />
         <div style={{ display: "flex", justifyContent: "center" }}>
           {LoadMore ? (
             <button

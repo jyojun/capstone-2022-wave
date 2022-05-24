@@ -48,19 +48,19 @@ const ListItem = styled.div`
     font-size: 18px;
     color: #6e6c6c;
   }
-  @-webkit-keyframes fadein {
-    from {
-      opacity: 0;
-      transform: translateY(50px);
-    }
+  // @-webkit-keyframes fadein {
+  //   from {
+  //     opacity: 0;
+  //     transform: translateY(50px);
+  //   }
 
-    to {
-      opacity: 3;
-      transform: none;
-    }
-  }
+  //   to {
+  //     opacity: 3;
+  //     transform: none;
+  //   }
+  // }
 
-  -webkit-animation: fadein 2s;
+  // -webkit-animation: fadein 2s;
 `;
 
 export { ListDiv, ListItem };

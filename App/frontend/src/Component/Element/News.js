@@ -4,26 +4,30 @@ import axios from "axios";
 import { NewsDiv } from "../../Style/HomeCSS";
 import { useNavigate } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import LoadingCircle from "./LoadingCircle";
 
 function News() {
+  const [Loading, setLoading] = useState(true);
   const [Informations, setInformations] = useState([]);
   const [Knowhows, setKnowhows] = useState([]);
   const navigate = useNavigate();
 
-  const getInformations = async () => {
-    await axios.post("/api/post/information").then((res) => {
+  const getInformations = () => {
+    axios.post("/api/post/information").then((res) => {
       if (res.data.success) {
         setInformations(res.data.postList);
+        setLoading(false);
       } else {
         alert("정보공유 포스트를 불러오지 못하였습니다.");
       }
     });
   };
 
-  const getKnowhows = async () => {
-    await axios.post("/api/post/knowhow").then((res) => {
+  const getKnowhows = () => {
+    axios.post("/api/post/knowhow").then((res) => {
       if (res.data.success) {
         setKnowhows(res.data.postList);
+        setLoading(false);
       } else {
         alert("정보공유 포스트를 불러오지 못하였습니다.");
       }
@@ -32,8 +36,6 @@ function News() {
   useEffect(() => {
     getInformations();
     getKnowhows();
-    console.log(Informations);
-    console.log(Knowhows);
   }, [Informations, Knowhows]);
   return (
     <NewsDiv>
@@ -48,72 +50,81 @@ function News() {
         >
           펫커스 최근소식
         </h3>
-        <div className="grid">
-          {Informations.map((item, idx) => {
-            return (
-              <div key={idx}>
-                <img
-                  style={{
-                    width: "100%",
-                    aspectRatio: "1/1",
-                    objectFit: "cover",
-                  }}
-                  src={item.image}
-                ></img>
-                <div style={{ marginTop: "1rem" }}>
-                  <p
+        {!Loading ? (
+          <div className="grid">
+            {Informations.map((item, idx) => {
+              return (
+                <div key={idx}>
+                  <img
                     style={{
-                      fontSize: "13px",
-                      color: "#4DAAC3",
-                      fontFamily: "roboto",
+                      width: "100%",
+                      aspectRatio: "1/1",
+                      objectFit: "cover",
                     }}
-                  >
-                    {item.category}
-                  </p>
-                  <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                    {item.title}
-                  </p>
-                  <p style={{ fontSize: "13px", color: "#707070" }}>
-                    {item.author.displayName}
-                  </p>
+                    src={item.image}
+                  ></img>
+                  <div style={{ marginTop: "1rem" }}>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "#4DAAC3",
+                        fontFamily: "roboto",
+                      }}
+                    >
+                      {item.category}
+                    </p>
+                    <p style={{ fontSize: "15px", fontWeight: "bold" }}>
+                      {item.title}
+                    </p>
+                    <p style={{ fontSize: "13px", color: "#707070" }}>
+                      {item.author.displayName}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="grid">
-          {Knowhows.map((item, idx) => {
-            return (
-              <div key={idx}>
-                <img
-                  style={{
-                    width: "100%",
-                    aspectRatio: "1/1",
-                    objectFit: "cover",
-                  }}
-                  src={item.image}
-                ></img>
-                <div style={{ marginTop: "1rem" }}>
-                  <p
+              );
+            })}
+          </div>
+        ) : (
+          <LoadingCircle />
+        )}
+        {!Loading ? (
+          <div className="grid">
+            {Knowhows.map((item, idx) => {
+              return (
+                <div key={idx}>
+                  <img
                     style={{
-                      fontSize: "13px",
-                      color: "#4DAAC3",
-                      fontFamily: "roboto",
+                      width: "100%",
+                      aspectRatio: "1/1",
+                      objectFit: "cover",
                     }}
-                  >
-                    {item.category}
-                  </p>
-                  <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                    {item.title}
-                  </p>
-                  <p style={{ fontSize: "13px", color: "#707070" }}>
-                    {item.author.displayName}
-                  </p>
+                    src={item.image}
+                  ></img>
+                  <div style={{ marginTop: "1rem" }}>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "#4DAAC3",
+                        fontFamily: "roboto",
+                      }}
+                    >
+                      {item.category}
+                    </p>
+                    <p style={{ fontSize: "15px", fontWeight: "bold" }}>
+                      {item.title}
+                    </p>
+                    <p style={{ fontSize: "13px", color: "#707070" }}>
+                      {item.author.displayName}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        ) : (
+          <LoadingCircle />
+        )}
+
         <div
           style={{
             width: "100%",
