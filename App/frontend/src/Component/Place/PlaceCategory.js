@@ -31,7 +31,7 @@ function PlaceCategory(props) {
               }}
               style={{ color: "white", marginRight: "3rem" }}
             >
-              숙소
+              펜션
             </Nav.Link>
             <Nav.Link
               onClick={() => {

@@ -44,7 +44,7 @@ function Register() {
       photoURL: "https://pecus2022.s3.ap-northeast-2.amazonaws.com/profile.png",
     });
 
-    console.log(createdUser.user);
+    // console.log(createdUser.user);
     let body = {
       eamil: createdUser.user.multiFactor.user.email,
       displayName: createdUser.user.multiFactor.user.displayName,
@@ -73,7 +73,7 @@ function Register() {
       .then((result) => {
         let token = result.credential.accessToken;
         let user = result.user;
-        console.log(result.user);
+        // console.log(result.user);
         let body = {
           eamil: result.user.multiFactor.user.email,
           displayName: result.user.multiFactor.user.displayName,

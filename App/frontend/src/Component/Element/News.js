@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import axios from "axios";
 import { NewsDiv } from "../../Style/HomeCSS";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import LoadingCircle from "./LoadingCircle";
 
@@ -54,33 +54,45 @@ function News() {
           <div className="grid">
             {Informations.map((item, idx) => {
               return (
-                <div key={idx}>
-                  <img
-                    style={{
-                      width: "100%",
-                      aspectRatio: "1/1",
-                      objectFit: "cover",
-                    }}
-                    src={item.image}
-                  ></img>
-                  <div style={{ marginTop: "1rem" }}>
-                    <p
+                <Link
+                  key={idx}
+                  style={{ textDecoration: "none" }}
+                  to={`post/${item.postNum}`}
+                >
+                  <div>
+                    <img
                       style={{
-                        fontSize: "13px",
-                        color: "#4DAAC3",
-                        fontFamily: "roboto",
+                        width: "100%",
+                        aspectRatio: "1/1",
+                        objectFit: "cover",
                       }}
-                    >
-                      {item.category}
-                    </p>
-                    <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                      {item.title}
-                    </p>
-                    <p style={{ fontSize: "13px", color: "#707070" }}>
-                      {item.author.displayName}
-                    </p>
+                      src={item.image}
+                    ></img>
+                    <div style={{ marginTop: "1rem" }}>
+                      <p
+                        style={{
+                          fontSize: "13px",
+                          color: "#4DAAC3",
+                          fontFamily: "roboto",
+                        }}
+                      >
+                        {item.category}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "15px",
+                          fontWeight: "bold",
+                          color: "black",
+                        }}
+                      >
+                        {item.title}
+                      </p>
+                      <p style={{ fontSize: "13px", color: "#707070" }}>
+                        {item.author.displayName}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -91,33 +103,45 @@ function News() {
           <div className="grid">
             {Knowhows.map((item, idx) => {
               return (
-                <div key={idx}>
-                  <img
-                    style={{
-                      width: "100%",
-                      aspectRatio: "1/1",
-                      objectFit: "cover",
-                    }}
-                    src={item.image}
-                  ></img>
-                  <div style={{ marginTop: "1rem" }}>
-                    <p
+                <Link
+                  key={idx}
+                  style={{ textDecoration: "none" }}
+                  to={`post/${item.postNum}`}
+                >
+                  <div>
+                    <img
                       style={{
-                        fontSize: "13px",
-                        color: "#4DAAC3",
-                        fontFamily: "roboto",
+                        width: "100%",
+                        aspectRatio: "1/1",
+                        objectFit: "cover",
                       }}
-                    >
-                      {item.category}
-                    </p>
-                    <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                      {item.title}
-                    </p>
-                    <p style={{ fontSize: "13px", color: "#707070" }}>
-                      {item.author.displayName}
-                    </p>
+                      src={item.image}
+                    ></img>
+                    <div style={{ marginTop: "1rem" }}>
+                      <p
+                        style={{
+                          fontSize: "13px",
+                          color: "#4DAAC3",
+                          fontFamily: "roboto",
+                        }}
+                      >
+                        {item.category}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "15px",
+                          fontWeight: "bold",
+                          color: "black",
+                        }}
+                      >
+                        {item.title}
+                      </p>
+                      <p style={{ fontSize: "13px", color: "#707070" }}>
+                        {item.author.displayName}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

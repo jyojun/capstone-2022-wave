@@ -14,9 +14,15 @@ function PlaceUpload(props) {
   const [PopUp, setPopUp] = useState(false);
 
   const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!user) {
+      alert("접근 권한이 없습니다.");
+      navigate("/place");
+    }
+  }, [user]);
 
   const PlaceTypes = ["펜션", "식당", "카페", "공원"];
-  let navigate = useNavigate();
 
   const ImageUpload = (e) => {
     let formData = new FormData();

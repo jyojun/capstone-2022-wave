@@ -68,7 +68,7 @@ function Community() {
 
   useEffect(() => {
     getPostList(); // sort가 바뀔때마다 getPostList 호출
-  }, [Sort, Category, PostList]);
+  }, [Sort, Category]);
 
   const SearchHandler = () => {
     getPostList();

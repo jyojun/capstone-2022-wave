@@ -24,6 +24,7 @@ import PlaceDetail from "./Component/Place/PlaceDetail";
 import PetUpload from "./Component/Pet/PetUpload";
 import ChatRoom from "./Component/Message/ChatRoom";
 import WriterChatRoom from "./Component/Message/WriterChatRoom";
+import ScrollButton from "./Component/Element/ScrollButton";
 
 function App() {
   const dispatch = useDispatch();
@@ -66,6 +67,7 @@ function App() {
           element={<WriterChatRoom />}
         />
       </Routes>
+      <ScrollButton />
       <Footer
         copyrightIcon
         height="15rem"
@@ -76,9 +78,7 @@ function App() {
         text={"(주)펫커스 Copyright(C) Petcus. All Right Reserved"}
         position={"absolute"}
         bottom={0}
-      >
-        <div></div>
-      </Footer>
+      ></Footer>
     </>
   );
 }
