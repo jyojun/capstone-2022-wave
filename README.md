@@ -31,8 +31,21 @@
 
 3.  반려동물 돌봄 및 산책 대행 카테고리
     - 기존 다른 펫시터 고용 서비스는 가격이 비싸기도 하고, 산책이나 돌봄 봉사을 시켜주고 싶어하는 동물을 사랑하는 사람들의 수요를 충족 및 반려인과 봉사자를 연결시켜주는 공간 (chat room 형식)
+    
+### II. UI 구성
+UI 구성
 
-### II. 시스템 구조도
+![UI 구성](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3ecda691-6dbd-48bc-a9c2-f57cb29f397b/Untitled_Diagram_%282%29.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230214%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230214T132300Z&X-Amz-Expires=86400&X-Amz-Signature=3ad74c815eaa596e6f864fed2afa428c23445951f903f3fc3501747e1b056ab8&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled%2520Diagram%2520%282%29.jpg%22&x-id=GetObject)
+
+- 메인페이지 : 주요 서비스들에 대한 설명과, 서비스들이 제공하는 후기 및 인기 sample 게시글 대한 View를 구성
+- 커뮤니티 페이지 : 유저가 올린 게시글 리스트 및 정렬/필터 기능 구성
+- 펫 플레이스 페이지 : 지역별/종류별(펜션, 카페, 식당) 필터링을 통한 장소정보/이미지 리스트로 구성 디테일 페이지엔 위치 지도 정보나 장소에 대한 후기를 볼 수 있음.
+- 로그인/회원가입 페이지 : 회원 정보 입력 및 회원 정보 등록하는 form으로 구성 / Google 로그인 버튼 추가
+- 유저 페이지(마이페이지) : 전반적인 유저에 대한 페이지와, 유저에 대한 후기 및 작성한 글 및 좋아요한 게시글, 그리고 등록한 펫 정보리스트를 제공한다.
+- 펫 등록 페이지 : 펫의 정보(이미지, 성별, 이름, 생년월일, 중성화 여부, 무게 등)을 등록하는 form으로 구성
+- 펫 케어 페이지 : 펫 시터를 구하는 게시글 및 메세지를 주고받을 수 있는 채팅 화면 구성
+
+### III. 시스템 구조도
 
 ![시스템구조도](https://pecus2022.s3.ap-northeast-2.amazonaws.com/%E1%84%8B%E1%85%B0%E1%86%B8+%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%83%E1%85%A9.jpg)
 
