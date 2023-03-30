@@ -35,7 +35,7 @@
 ### II. UI 구성
 UI 구성
 
-![UI 구성](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3ecda691-6dbd-48bc-a9c2-f57cb29f397b/Untitled_Diagram_%282%29.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230214%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230214T132300Z&X-Amz-Expires=86400&X-Amz-Signature=3ad74c815eaa596e6f864fed2afa428c23445951f903f3fc3501747e1b056ab8&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled%2520Diagram%2520%282%29.jpg%22&x-id=GetObject)
+![UI 구성](https://pecus2022.s3.ap-northeast-2.amazonaws.com/B4D87593-020C-4DD0-B2E9-61A686EDC924.jpeg)
 
 - 메인페이지 : 주요 서비스들에 대한 설명과, 서비스들이 제공하는 후기 및 인기 sample 게시글 대한 View를 구성
 - 커뮤니티 페이지 : 유저가 올린 게시글 리스트 및 정렬/필터 기능 구성
